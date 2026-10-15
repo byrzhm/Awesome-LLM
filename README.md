@@ -7,6 +7,10 @@
 
 ## Trending LLM Projects
 
+- [MiMo-V2.6](https://arxiv.org/abs/2610.11959) - Xiaomi's report on scaling asynchronous, mixed-domain reinforcement learning towards model self-improvement.
+- [Kimi K3](https://github.com/MoonshotAI/Kimi-K3) - Open MoE model with native vision, million-token context, and agentic reinforcement learning.
+- [DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) - Multimodal MoE model with compressed KV caching and million-token context.
+- [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra) - Official OpenAI model documentation for reasoning, coding, and multi-step tool workflows.
 - [TinyZero](https://github.com/Jiayi-Pan/TinyZero) - Clean, minimal, accessible reproduction of DeepSeek R1-Zero
 - [open-r1](https://github.com/huggingface/open-r1) - Fully open reproduction of DeepSeek-R1
 - [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - First-generation reasoning models from DeepSeek.
@@ -18,6 +22,7 @@
 
 ## Table of Content
 - [Awesome-LLM ](#awesome-llm-)
+  - [Recent Research](#recent-research)
   - [Milestone Papers](#milestone-papers)
   - [Other Papers](#other-papers)
   - [LLM Leaderboard](#llm-leaderboard)
@@ -32,7 +37,17 @@
   - [Great thoughts about LLM](#great-thoughts-about-llm)
   - [Miscellaneous](#miscellaneous)
 
+## Recent Research
+
+Sources checked on **2026-10-15**. Paper dates and model launch dates are distinguished in the linked lists.
+
+- [Recent Frontier Model Reports](paper_list/frontier_models.md) - MiMo, Kimi, and DeepSeek papers with dates, contributions, and official resources; GPT-6 Astra is covered through verified official documentation.
+- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - RLHF, PPO, GRPO, DAPO, GSPO, verifiable rewards, agent training, systems, and recent analysis, with paper summaries and a suggested reading path.
+- [RLHF Starting Points](paper_list/RLHF.md) - InstructGPT, Constitutional AI, and the RL-free DPO comparison.
+
 ## Milestone Papers
+
+The [recent model report guide](paper_list/frontier_models.md) explains the contributions of the newly added model papers. New entries use the first arXiv submission month, except the explicitly marked official-release report.
 
 <details>
 
@@ -102,6 +117,16 @@
 | 2024-12 |         Qwen2.5        |      Alibaba     | [Qwen2.5 Technical Report](https://arxiv.org/abs/2412.15115) |
 | 2024-12 |         DeepSeek-V3        |      DeepSeek     | [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437v1) |
 | 2025-01 |         DeepSeek-R1        |      DeepSeek     | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948) |
+| 2025-01 | Kimi k1.5 | Moonshot AI | [Kimi k1.5: Scaling Reinforcement Learning with LLMs](https://arxiv.org/abs/2501.12599) |
+| 2025-05 | MiMo | Xiaomi | [MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining](https://arxiv.org/abs/2505.07608) |
+| 2025-07 | Kimi K2 | Moonshot AI | [Kimi K2: Open Agentic Intelligence](https://arxiv.org/abs/2507.20534) |
+| 2025-12 | DeepSeek-V3.2 | DeepSeek | [DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models](https://arxiv.org/abs/2512.02556) |
+| 2026-01 | MiMo-V2-Flash | Xiaomi | [MiMo-V2-Flash Technical Report](https://arxiv.org/abs/2601.02780) |
+| 2026-02 | Kimi K2.5 | Moonshot AI | [Kimi K2.5: Visual Agentic Intelligence](https://arxiv.org/abs/2602.02276) |
+| 2026-04 | DeepSeek-V4 | DeepSeek | [DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence](https://arxiv.org/abs/2606.19348) |
+| 2026-07 | Kimi K3 | Moonshot AI | [Kimi K3: Open Frontier Intelligence](https://arxiv.org/abs/2607.24653) |
+| 2026-09 (official release) | DeepSeek-V4.1-Flash | DeepSeek | [DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf) |
+| 2026-10 | MiMo-V2.6 | Xiaomi | [MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement](https://arxiv.org/abs/2610.11959) |
 
 </details>
 
@@ -112,6 +137,8 @@
 <details>
   <summary> other papers </summary>
 
+- [Recent Frontier Model Reports](paper_list/frontier_models.md) - Papers and technical reports from MiMo, Kimi, and DeepSeek, plus GPT-6 Astra official documentation.
+- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - A curated paper guide covering RLHF, reasoning, verifiable rewards, agents, and RL training systems.
 - [Awesome-LLM-hallucination](https://github.com/LuckyyySTA/Awesome-LLM-hallucination) - LLM hallucination paper list.
 - [awesome-hallucination-detection](https://github.com/EdinburghNLP/awesome-hallucination-detection) - List of papers on hallucination detection in LLMs.
 - [LLMsPracticalGuide](https://github.com/Mooler0410/LLMsPracticalGuide) - A curated list of practical guide resources of LLMs
@@ -199,8 +226,23 @@
   - [DeepSeek-V2.5](https://huggingface.co/deepseek-ai/DeepSeek-V2.5)
   - [DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3)
   - [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1)
+  - [DeepSeek-V3.2](https://huggingface.co/deepseek-ai/DeepSeek-V3.2)
+  - [DeepSeek-V4-Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)
+  - [DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
 
 </details>
+<details>
+<summary>Xiaomi</summary>
+
+  - [MiMo-7B](https://github.com/XiaomiMiMo/MiMo)
+  - [MiMo-VL](https://github.com/XiaomiMiMo/MiMo-VL)
+  - [MiMo-Audio](https://github.com/XiaomiMiMo/MiMo-Audio)
+  - [MiMo-V2-Flash](https://github.com/XiaomiMiMo/MiMo-V2-Flash)
+  - [MiMo-V2.6-Pro-RL](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL)
+  - [MiMo-V2.6-Flash-RL](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL)
+
+</details>
+
 <details>
 <summary>Alibaba</summary>
 
@@ -386,6 +428,9 @@
   - [Moonlight-A3B](https://huggingface.co/collections/moonshotai/moonlight-a3b-67f67b029cecfdce34f4dc23)
   - [Kimi-VL-A3B](https://huggingface.co/collections/moonshotai/kimi-vl-a3b-67f67b6ac91d3b03d382dd85)
   - [Kimi-K2](https://huggingface.co/collections/moonshotai/kimi-k2-6871243b990f2af5ba60617d)
+  - [Kimi Linear](https://github.com/MoonshotAI/Kimi-Linear)
+  - [Kimi K2.5](https://github.com/MoonshotAI/Kimi-K2.5)
+  - [Kimi K3](https://huggingface.co/moonshotai/Kimi-K3)
     
 </details>
 
@@ -432,7 +477,7 @@
   - [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed) - DeepSpeed version of NVIDIA's Megatron-LM that adds additional support for several features such as MoE model training, Curriculum Learning, 3D Parallelism, and others. 
   - [torchtune](https://github.com/pytorch/torchtune) - A Native-PyTorch Library for LLM Fine-tuning.
   - [ROLL](https://github.com/alibaba/ROLL) - An Efficient and User-Friendly Scaling Library for Reinforcement Learning with Large Language Models.
-  - [veRL](https://github.com/volcengine/verl) - veRL is a flexible and efficient RL framework for LLMs.
+  - [verl](https://github.com/verl-project/verl) - A flexible and efficient RL framework for LLMs; see the [RL paper guide](paper_list/reinforcement_learning.md) for its HybridFlow paper and related systems.
   - [NeMo Framework](https://github.com/NVIDIA/NeMo) - Generative AI framework built for researchers and PyTorch developers working on Large Language Models (LLMs), Multimodal Models (MMs), Automatic Speech Recognition (ASR), Text to Speech (TTS), and Computer Vision (CV) domains.
   - [Colossal-AI](https://github.com/hpcaitech/ColossalAI) - Making large AI models cheaper, faster, and more accessible.
   - [BMTrain](https://github.com/OpenBMB/BMTrain) - Efficient Training for Big Models.
