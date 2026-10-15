@@ -5,6 +5,6 @@
 
 ### 2023
 
-- (2023-02)  **High-throughput Generative Inference of Large Language Models with a single GPU** Ying Sheng et al. [Paper](https://github.com/FMInference/FlexGen/blob/main/docs/paper.pdf) | [Github](https://github.com/FMInference/FlexGen)
+- (2023-02)  **High-throughput Generative Inference of Large Language Models with a single GPU** Ying Sheng et al. [Paper](https://arxiv.org/abs/2303.06865) | [Github](https://github.com/FMInference/FlexGen)
 
 ## Useful Resources

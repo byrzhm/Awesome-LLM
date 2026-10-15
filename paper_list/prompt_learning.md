@@ -4,7 +4,7 @@
 
 ### 2020
 
-- (2020-12) **Making Pre-trained Language Models Better Few-shot Learners**  [paper](https://arxiv.org/pdf/2012.15723.pdf)
+- (2020-12) **Making Pre-trained Language Models Better Few-shot Learners**  [paper](https://arxiv.org/abs/2012.15723)
 
 ### 2021
 
