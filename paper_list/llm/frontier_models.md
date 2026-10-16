@@ -49,4 +49,4 @@ DeepSeek-V4 launched on April 24, 2026. The linked arXiv page lists April 26, 20
 
 **GPT-6 Astra** is the official model name. As of the source check on October 15, 2026, the official OpenAI documentation reviewed here did not provide a separate public paper or technical-report link. This entry links model documentation and its release record.
 
-[Back to Awesome-LLM](../README.md)
+[Back to LLM](../../README.md#llm)

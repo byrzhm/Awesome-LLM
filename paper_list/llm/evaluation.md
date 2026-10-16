@@ -55,10 +55,14 @@
 - (2023-04) **Why Does ChatGPT Fall Short in Answering Questions Faithfully?** [paper](https://arxiv.org/abs/2304.10513)
 
 - (2023-04) **Evaluating ChatGPT's Information Extraction Capabilities: An Assessment of Performance, Explainability, Calibration, and Faithfulness** [paper](https://arxiv.org/abs/2304.11633)
- 
+
 - (2023-04) **Are Emergent Abilities of Large Language Models a Mirage?** [paper](https://arxiv.org/abs/2304.15004)
 
 - (2023-10) **Beyond Factuality: A Comprehensive Evaluation of Large Language Models as Knowledge Generators** [paper](https://arxiv.org/abs/2310.07289) | [code](https://github.com/ChanLiang/CONNER)
 
 ## Useful Resources
+
+[Evaluation frameworks](../../README.md#llm-evaluation) and [leaderboards](../../README.md#llm-leaderboard) measure model quality; [infrastructure profiling](../../README.md#profiling-benchmarks-and-observability) measures system performance.
+
+[Back to LLM](../../README.md#llm)
 

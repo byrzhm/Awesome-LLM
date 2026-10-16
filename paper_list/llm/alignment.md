@@ -1,5 +1,7 @@
 # Alignment
 
+See also [RLHF](rlhf.md) and [reinforcement learning](reinforcement_learning.md) for preference optimization and reasoning-oriented post-training.
+
 ## Papers
 
 ### 2023
@@ -17,4 +19,6 @@
 
 ## Useful Resources
 - [Awesome-Align-LLM-Human](https://github.com/GaryYufei/AlignLLMHumanSurvey) - A collection of papers and resources about aligning large language models (LLMs) with human.
+
+[Back to LLM](../../README.md#llm)
 

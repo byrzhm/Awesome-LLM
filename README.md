@@ -1,198 +1,48 @@
-
 # Awesome-LLM [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 ![](resources/image8.gif)
 
-A curated list of **AI infrastructure (AI Infra)** papers, frameworks, and engineering resources for building, scaling, and operating AI systems. The primary focus is distributed training, reinforcement learning and post-training systems, inference and serving, GPU kernels and compilers, communication, cluster orchestration, data pipelines, and performance measurement.
+A curated list of **LLM** and **AI infrastructure (AI Infra)** papers, models, frameworks, and learning resources, organized from model foundations to the systems that train, serve, and operate them.
 
-LLMs and mixture-of-experts (MoE) models are the main workloads covered here. Model reports, checkpoints, quality evaluation, and applications are retained as supporting context for infrastructure design and trade-offs.
-
-## AI Infra Highlights
-
-- **Distributed training:** [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), [DeepSpeed](https://github.com/microsoft/DeepSpeed), and [torchtitan](https://github.com/pytorch/torchtitan).
-- **RL and post-training systems:** [verl](https://github.com/verl-project/verl), [miles](https://github.com/radixark/miles), [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF), and [ROLL](https://github.com/alibaba/ROLL).
-- **Inference and serving:** [SGLang](https://github.com/sgl-project/sglang), [vLLM](https://github.com/vllm-project/vllm), and [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM).
-- **GPU kernels and communication:** [Triton](https://github.com/triton-lang/triton), [CUTLASS](https://github.com/NVIDIA/cutlass), [FlashAttention](https://github.com/Dao-AILab/flash-attention), and [NCCL](https://github.com/NVIDIA/nccl).
-- **Cluster orchestration:** [Ray](https://github.com/ray-project/ray), [Kueue](https://github.com/kubernetes-sigs/kueue), and [SkyPilot](https://github.com/skypilot-org/skypilot).
+Start with **LLM**: milestone papers, architectures, learning algorithms, data, and model quality. Then continue with **AI Infra**: distributed training, RL systems, inference and serving, GPU kernels, communication, orchestration, data pipelines, and performance measurement. LLMs and mixture-of-experts (MoE) models are the main workloads connecting the two parts.
 
 ## Table of Contents
 
-- [AI Infra Highlights](#ai-infra-highlights)
-- [AI Infra Papers](#ai-infra-papers)
-- [LLM Training Frameworks](#llm-training-frameworks)
-- [Reinforcement Learning and Post-training](#reinforcement-learning-and-post-training)
-- [LLM Inference](#llm-inference)
-- [GPU Kernels and Compilers](#gpu-kernels-and-compilers)
-- [Distributed Communication](#distributed-communication)
-- [Cluster Orchestration and Deployment](#cluster-orchestration-and-deployment)
-- [Profiling, Benchmarks, and Observability](#profiling-benchmarks-and-observability)
-- [LLM Data](#llm-data)
-- [LLM Evaluation](#llm-evaluation)
-- [Recent Research](#recent-research)
-- [Trending LLM Projects](#trending-llm-projects)
-- [Milestone Papers](#milestone-papers)
-- [Other Papers](#other-papers)
-- [LLM Leaderboard](#llm-leaderboard)
-- [Open LLM](#open-llm)
-- [LLM Applications](#llm-applications)
-- [LLM Tutorials and Courses](#llm-tutorials-and-courses)
-- [LLM Books](#llm-books)
-- [Great thoughts about LLM](#great-thoughts-about-llm)
-- [Miscellaneous](#miscellaneous)
+- [LLM](#llm)
+  - [Milestone Papers](#milestone-papers)
+  - [LLM Research Topics](#llm-research-topics)
+  - [Recent Research](#recent-research)
+  - [Trending LLM Projects](#trending-llm-projects)
+  - [Open LLM](#open-llm)
+  - [LLM Data](#llm-data)
+  - [LLM Evaluation](#llm-evaluation)
+  - [LLM Leaderboard](#llm-leaderboard)
+  - [LLM Applications](#llm-applications)
+  - [LLM Tutorials and Courses](#llm-tutorials-and-courses)
+  - [LLM Books](#llm-books)
+  - [Great thoughts about LLM](#great-thoughts-about-llm)
+  - [Miscellaneous](#miscellaneous)
+- [AI Infra](#ai-infra)
+  - [AI Infra Highlights](#ai-infra-highlights)
+  - [AI Infra Papers](#ai-infra-papers)
+  - [LLM Training Frameworks](#llm-training-frameworks)
+  - [Reinforcement Learning and Post-training](#reinforcement-learning-and-post-training)
+  - [LLM Inference](#llm-inference)
+  - [GPU Kernels and Compilers](#gpu-kernels-and-compilers)
+  - [Distributed Communication](#distributed-communication)
+  - [Cluster Orchestration and Deployment](#cluster-orchestration-and-deployment)
+  - [Data Pipelines](#data-pipelines)
+  - [Profiling, Benchmarks, and Observability](#profiling-benchmarks-and-observability)
+  - [AI Infra Tutorials and Articles](#ai-infra-tutorials-and-articles)
 - [Contributing](#contributing)
 
-## AI Infra Papers
+## LLM
 
-- [Training and Inference Systems](paper_list/acceleration.md) - Model parallelism, memory optimization, IO-aware attention, KV cache management, and serving architecture.
-- [RL Training Systems](paper_list/reinforcement_learning.md#training-systems) - OpenRLHF and HybridFlow/verl, with emphasis on coordinating rollout generation and training.
-- [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - A broader collection of LLM systems research.
-- [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - Inference papers with implementation links.
+Prerequisite knowledge for AI infrastructure: how language models are built, trained, aligned, evaluated, and used. Read the milestone papers first, then follow the topic guides before continuing to [AI Infra](#ai-infra).
 
-## LLM Training Frameworks
+### Milestone Papers
 
-- [Meta Lingua](https://github.com/facebookresearch/lingua) - a lean, efficient, and easy-to-hack codebase to research LLMs.
-- [Litgpt](https://github.com/Lightning-AI/litgpt) - 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
-- [nanotron](https://github.com/huggingface/nanotron) - Minimalistic large language model 3D-parallelism training.
-- [DeepSpeed](https://github.com/microsoft/DeepSpeed) - DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
-- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) - Ongoing research training transformer models at scale.
-- [torchtitan](https://github.com/pytorch/torchtitan) - A native PyTorch Library for large model training.
-
-<details>
-<summary>other frameworks</summary>
-
-  - [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed) - DeepSpeed version of NVIDIA's Megatron-LM that adds additional support for several features such as MoE model training, Curriculum Learning, 3D Parallelism, and others.
-  - [torchtune](https://github.com/pytorch/torchtune) - A Native-PyTorch Library for LLM Fine-tuning.
-  - [NeMo Framework](https://github.com/NVIDIA/NeMo) - Generative AI framework built for researchers and PyTorch developers working on Large Language Models (LLMs), Multimodal Models (MMs), Automatic Speech Recognition (ASR), Text to Speech (TTS), and Computer Vision (CV) domains.
-  - [Colossal-AI](https://github.com/hpcaitech/ColossalAI) - Making large AI models cheaper, faster, and more accessible.
-  - [BMTrain](https://github.com/OpenBMB/BMTrain) - Efficient Training for Big Models.
-  - [Mesh Tensorflow](https://github.com/tensorflow/mesh) - Mesh TensorFlow: Model Parallelism Made Easier.
-  - [maxtext](https://github.com/AI-Hypercomputer/maxtext) - A simple, performant and scalable Jax LLM!
-  - [GPT-NeoX](https://github.com/EleutherAI/gpt-neox) - An implementation of model parallel autoregressive transformers on GPUs, based on the DeepSpeed library.
-  - [Transformer Engine](https://github.com/NVIDIA/TransformerEngine) - A library for accelerating Transformer model training on NVIDIA GPUs.
-  - [unslothai](https://github.com/unslothai/unsloth) - A framework that specializes in efficient fine-tuning. On its GitHub page, you can find ready-to-use fine-tuning templates for various LLMs, allowing you to easily train your own data for free on the Google Colab cloud.
-  - [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) - Open-source framework for fine-tuning and evaluating LLMs. It simplifies the process of experimenting with different training configurations and makes it easy to reproduce and share results, supporting features like LoRA, QLoRA, DeepSpeed, PEFT, and multi-GPU setups.
-
-</details>
-
-### Reinforcement Learning and Post-training
-
-- [verl](https://github.com/verl-project/verl) - A flexible and efficient RL framework for LLMs; see the [RL paper guide](paper_list/reinforcement_learning.md) for its HybridFlow paper and related systems.
-- [miles](https://github.com/radixark/miles) - A reinforcement learning framework for large-scale model post-training, combining SGLang rollouts with Megatron-LM training and supporting fully asynchronous RL.
-- [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) - An Easy-to-use, Scalable and High-performance RLHF Framework (70B+ PPO Full Tuning & Iterative DPO & LoRA & RingAttention & RFT).
-- [ROLL](https://github.com/alibaba/ROLL) - An Efficient and User-Friendly Scaling Library for Reinforcement Learning with Large Language Models.
-- [TRL](https://huggingface.co/docs/trl/en/index) - TRL is a full stack library where we provide a set of tools to train transformer language models with Reinforcement Learning, from the Supervised Fine-tuning step (SFT), Reward Modeling step (RM) to the Proximal Policy Optimization (PPO) step.
-
-## LLM Inference
-
-> Reference: [llm-inference-solutions](https://github.com/mani-kantap/llm-inference-solutions)
-- [SGLang](https://github.com/sgl-project/sglang) - SGLang is a fast serving framework for large language models and vision language models.
-- [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs.
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) - LLM inference in C/C++.
-- [ollama](https://github.com/ollama/ollama) - Get up and running with Llama 3, Mistral, Gemma, and other large language models.
-- [TGI](https://huggingface.co/docs/text-generation-inference/en/index) - a toolkit for deploying and serving Large Language Models (LLMs).
-- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) - Nvidia Framework for LLM Inference
-<details>
-<summary>other deployment tools</summary>
-
-- [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) - NVIDIA Framework for LLM Inference(Transitioned to TensorRT-LLM)
-- [MInference](https://github.com/microsoft/MInference) - To speed up Long-context LLMs' inference, approximate and dynamic sparse calculate the attention, which reduces inference latency by up to 10x for pre-filling on an A100 while maintaining accuracy.
-- [exllama](https://github.com/turboderp/exllama) - A more memory-efficient rewrite of the HF transformers implementation of Llama for use with quantized weights.
-- [FastChat](https://github.com/lm-sys/FastChat) - A distributed multi-model LLM serving system with web UI and OpenAI-compatible RESTful APIs.
-- [mistral.rs](https://github.com/EricLBuehler/mistral.rs) - Blazingly fast LLM inference.
-- [Haystack](https://haystack.deepset.ai/) - an open-source NLP framework that allows you to use LLMs and transformer-based models from Hugging Face, OpenAI and Cohere to interact with your own data.
-- [OpenLLM](https://github.com/bentoml/OpenLLM) - Fine-tune, serve, deploy, and monitor any open-source LLMs in production. Used in production at [BentoML](https://bentoml.com/) for LLMs-based applications.
-- [DeepSpeed-Mii](https://github.com/microsoft/DeepSpeed-MII) -  MII makes low-latency and high-throughput inference, similar to vLLM powered by DeepSpeed.
-- [Text-Embeddings-Inference](https://github.com/huggingface/text-embeddings-inference) - Inference for text-embeddings in Rust, HFOIL Licence.
-- [Infinity](https://github.com/michaelfeil/infinity) - Inference for text-embeddings in Python
-- [LMDeploy](https://github.com/InternLM/lmdeploy) - A high-throughput and low-latency inference and serving framework for LLMs and VLs
-- [prima.cpp](https://github.com/Lizonghang/prima.cpp) - A distributed implementation of llama.cpp that lets you run 70B-level LLMs on your everyday devices.
-- [deploy-llms-with-ansible](https://github.com/xamey/deploy-llms-with-ansible) - Easily deploy any LLM on a VM with minimal configuration, using Ansible.
-
-</details>
-
-## GPU Kernels and Compilers
-
-- [Triton](https://github.com/triton-lang/triton) - A language and compiler for writing efficient GPU kernels.
-- [CUTLASS](https://github.com/NVIDIA/cutlass) - CUDA C++ abstractions for high-performance matrix multiplication and related operations, including CuTe.
-- [FlashAttention](https://github.com/Dao-AILab/flash-attention) - IO-aware attention kernels that reduce memory traffic without approximating attention.
-- [FlashInfer](https://github.com/flashinfer-ai/flashinfer) - GPU kernels for attention and other LLM inference operations.
-- [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) - Efficient Triton Kernels for LLM Training.
-- [torch.compile](https://pytorch.org/docs/stable/torch.compiler.html) - PyTorch's compilation stack for optimizing model execution.
-
-## Distributed Communication
-
-- [NCCL](https://github.com/NVIDIA/nccl) - Optimized collective communication primitives for NVIDIA GPUs.
-- [UCX](https://github.com/openucx/ucx) - Communication libraries for high-performance networks and shared memory.
-- [DeepEP](https://github.com/deepseek-ai/DeepEP) - Expert-parallel communication for MoE token dispatch and combine.
-
-## Cluster Orchestration and Deployment
-
-- [Ray](https://github.com/ray-project/ray) - Distributed execution and libraries for AI training, data processing, and serving.
-- [Kueue](https://github.com/kubernetes-sigs/kueue) - Kubernetes-native job queueing and quota management for shared compute clusters.
-- [SkyPilot](https://github.com/skypilot-org/skypilot) - Run LLMs and batch jobs on any cloud. Get maximum cost savings, highest GPU availability, and managed execution -- all with a simple interface.
-- [KServe](https://github.com/kserve/kserve) - Kubernetes-based model serving with inference services and autoscaling.
-
-## Profiling, Benchmarks, and Observability
-
-Measure infrastructure separately from model quality: training throughput and model FLOPs utilization (MFU), time to first token (TTFT), inter-token latency, throughput under a stated latency target, memory use, and cost. Report hardware, precision, sequence lengths, batch size or concurrency, and software versions alongside results.
-
-- [PyTorch Profiler](https://pytorch.org/docs/stable/profiler.html) - Trace operator execution, memory use, and CPU/GPU activity.
-- [Nsight Systems](https://developer.nvidia.com/nsight-systems) - Inspect end-to-end execution timelines and compute/communication overlap.
-- [Nsight Compute](https://developer.nvidia.com/nsight-compute) - Inspect GPU kernel metrics, memory behavior, and hardware utilization.
-- [MLPerf](https://mlcommons.org/benchmarks/) - Standardized training and inference benchmarks with defined workloads and reporting rules.
-- [Prometheus](https://prometheus.io/) - Collect and query service metrics such as request latency, queue depth, and resource use.
-- [Grafana](https://grafana.com/oss/grafana/) - Dashboards for infrastructure and serving metrics.
-
-## LLM Data
-> Reference: [LLMDataHub](https://github.com/Zjh-819/LLMDataHub)
-- [IBM data-prep-kit](https://github.com/IBM/data-prep-kit) - Open-Source Toolkit for Efficient Unstructured Data Processing with Pre-built Modules and Local to Cluster Scalability.
-- [Datatrove](https://github.com/huggingface/datatrove) - Freeing data processing from scripting madness by providing a set of platform-agnostic customizable pipeline processing blocks.
-- [Dingo](https://github.com/DataEval/dingo) - Dingo: A Comprehensive Data Quality Evaluation Tool
-- [FastDatasets](https://github.com/ZhuLinsen/FastDatasets) - A powerful tool for creating high-quality training datasets for Large Language Models
-
-## LLM Evaluation:
-- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) - A framework for few-shot evaluation of language models.
-- [lighteval](https://github.com/huggingface/lighteval) - a lightweight LLM evaluation suite that Hugging Face has been using internally.
-- [simple-evals](https://github.com/openai/simple-evals) - Eval tools by OpenAI.
-
-<details>
-<summary>other evaluation frameworks</summary>
-
-- [OLMO-eval](https://github.com/allenai/OLMo-Eval) - a repository for evaluating open language models.
-- [MixEval](https://github.com/Psycoy/MixEval) - A reliable click-and-go evaluation suite compatible with both open-source and proprietary models, supporting MixEval and other benchmarks.
-- [HELM](https://github.com/stanford-crfm/helm) - Holistic Evaluation of Language Models (HELM), a framework to increase the transparency of language models.
-- [instruct-eval](https://github.com/declare-lab/instruct-eval) - This repository contains code to quantitatively evaluate instruction-tuned models such as Alpaca and Flan-T5 on held-out tasks.
-- [Giskard](https://github.com/Giskard-AI/giskard) - Testing & evaluation library for LLM applications, in particular RAGs
-- [LangSmith](https://www.langchain.com/langsmith) - a unified platform from LangChain framework for: evaluation, collaboration HITL (Human In The Loop), logging and monitoring LLM applications.
-- [Ragas](https://github.com/explodinggradients/ragas) - a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines.
-
-</details>
-
-## Recent Research
-
-Sources checked on **2026-10-15**. Paper dates and model launch dates are distinguished in the linked lists.
-
-- [Recent Frontier Model Reports](paper_list/frontier_models.md) - MiMo, Kimi, and DeepSeek papers with dates, contributions, and official resources; GPT-6 Astra is covered through verified official documentation.
-- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - RLHF, PPO, GRPO, DAPO, GSPO, verifiable rewards, agent training, systems, and recent analysis, with paper summaries and a suggested reading path.
-- [RLHF Starting Points](paper_list/RLHF.md) - InstructGPT, Constitutional AI, and the RL-free DPO comparison.
-
-## Trending LLM Projects
-
-- [MiMo-V2.6](https://arxiv.org/abs/2610.11959) - Xiaomi's report on scaling asynchronous, mixed-domain reinforcement learning towards model self-improvement.
-- [Kimi K3](https://github.com/MoonshotAI/Kimi-K3) - Open MoE model with native vision, million-token context, and agentic reinforcement learning.
-- [DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) - Multimodal MoE model with compressed KV caching and million-token context.
-- [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra) - Official OpenAI model documentation for reasoning, coding, and multi-step tool workflows.
-- [TinyZero](https://github.com/Jiayi-Pan/TinyZero) - Clean, minimal, accessible reproduction of DeepSeek R1-Zero
-- [open-r1](https://github.com/huggingface/open-r1) - Fully open reproduction of DeepSeek-R1
-- [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - First-generation reasoning models from DeepSeek.
-- [Qwen2.5-Max](https://qwenlm.github.io/blog/qwen2.5-max/) - Exploring the Intelligence of Large-scale MoE Model.
-- [OpenAI o3-mini](https://openai.com/index/openai-o3-mini/) - Pushing the frontier of cost-effective reasoning.
-- [DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3) - First open-sourced GPT-4o level model.
-- [Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) - MoE language model with 32B active and 1T total parameters.
-
-## Milestone Papers
-
-The [recent model report guide](paper_list/frontier_models.md) explains the contributions of the newly added model papers. New entries use the first arXiv submission month, except the explicitly marked official-release report.
+Model and algorithm milestones establish the foundation for the systems sections that follow. Systems milestones such as Megatron-LM, ZeRO, and Megatron-Turing NLG are catalogued under [AI Infra Papers](#ai-infra-papers). The [recent model report guide](paper_list/llm/frontier_models.md) explains the contributions of the newly added model papers. New entries use the first arXiv submission month, except the explicitly marked official-release report.
 
 <details>
 
@@ -204,9 +54,7 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 | 2018-06 |        GPT 1.0       |       OpenAI       | [Improving Language Understanding by Generative Pre-Training](https://www.cs.ubc.ca/~amuham01/LING530/papers/radford2018improving.pdf)                                                                             |
 | 2018-10 |         BERT         |       Google       | [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)                                                                                          |
 | 2019-02 |        GPT 2.0       |       OpenAI       | [Language Models are Unsupervised Multitask Learners](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)                                          |
-| 2019-09 |      Megatron-LM     |       NVIDIA       | [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](https://arxiv.org/abs/1909.08053)                                                                                      |
 | 2019-10 |          T5          |       Google       | [Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer](https://arxiv.org/abs/1910.10683)                                                                                       |
-| 2019-10 |         ZeRO         |      Microsoft     | [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](https://arxiv.org/abs/1910.02054)                                                                                                       |
 | 2020-01 |      Scaling Law     |       OpenAI       | [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361)                                                                                                                                    |
 | 2020-05 |        GPT 3.0       |       OpenAI       | [Language models are few-shot learners](https://arxiv.org/abs/2005.14165)                                                                                         |
 | 2021-01 |  Switch Transformers |       Google       | [Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity](https://arxiv.org/abs/2101.03961)                                                                               |
@@ -221,7 +69,6 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 | 2022-01 |          COT         |       Google       | [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903)                                                                                                      |
 | 2022-01 |         LaMDA        |       Google       | [LaMDA: Language Models for Dialog Applications](https://arxiv.org/abs/2201.08239)                                                                                                                             |
 | 2022-01 |        Minerva       |       Google       | [Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858)                                                                                                                   |
-| 2022-01 |  Megatron-Turing NLG |  Microsoft&NVIDIA  | [Using Deep and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model](https://arxiv.org/abs/2201.11990)                                                                         |
 | 2022-03 |      InstructGPT     |       OpenAI       | [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155)                                                                                                        |
 | 2022-04 |         PaLM         |       Google       | [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311)                                                                                                                              |
 | 2022-04 |      Chinchilla      |      DeepMind      | [Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)                             |
@@ -275,88 +122,92 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 
 </details>
 
-## Other Papers
-> [!NOTE]
-> If you're interested in the field of LLM, you may find the above list of milestone papers helpful to explore its history and state-of-the-art. However, each direction of LLM offers a unique set of insights and contributions, which are essential to understanding the field as a whole. For a detailed list of papers in various subfields, please refer to the following link:
+<a id="other-papers"></a>
 
-<details>
-  <summary> other papers </summary>
+### LLM Research Topics
 
-- [Recent Frontier Model Reports](paper_list/frontier_models.md) - Papers and technical reports from MiMo, Kimi, and DeepSeek, plus GPT-6 Astra official documentation.
-- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - A curated paper guide covering RLHF, reasoning, verifiable rewards, agents, and RL training systems.
-- [Awesome-LLM-hallucination](https://github.com/LuckyyySTA/Awesome-LLM-hallucination) - LLM hallucination paper list.
-- [awesome-hallucination-detection](https://github.com/EdinburghNLP/awesome-hallucination-detection) - List of papers on hallucination detection in LLMs.
-- [LLMsPracticalGuide](https://github.com/Mooler0410/LLMsPracticalGuide) - A curated list of practical guide resources of LLMs
-- [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) - A collection of prompt examples to be used with the ChatGPT model.
-- [awesome-chatgpt-prompts-zh](https://github.com/PlexPt/awesome-chatgpt-prompts-zh) - A Chinese collection of prompt examples to be used with the ChatGPT model.
-- [Awesome ChatGPT](https://github.com/humanloop/awesome-chatgpt) - Curated list of resources for ChatGPT and GPT-3 from OpenAI.
-- [Chain-of-Thoughts Papers](https://github.com/Timothyxxx/Chain-of-ThoughtsPapers) -  A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Language Models.
-- [Awesome Deliberative Prompting](https://github.com/logikon-ai/awesome-deliberative-prompting) - How to ask LLMs to produce reliable reasoning and make reason-responsive decisions.
-- [Instruction-Tuning-Papers](https://github.com/SinclairCoder/Instruction-Tuning-Papers) - A trend starts from `Natrural-Instruction` (ACL 2022), `FLAN` (ICLR 2022) and `T0` (ICLR 2022).
-- [LLM Reading List](https://github.com/crazyofapple/Reading_groups/) - A paper & resource list of large language models.
-- [Reasoning using Language Models](https://github.com/atfortes/LM-Reasoning-Papers) - Collection of papers and resources on Reasoning using Language Models.
-- [Chain-of-Thought Hub](https://github.com/FranxYao/chain-of-thought-hub) - Measuring LLMs' Reasoning Performance
-- [Awesome GPT](https://github.com/formulahendry/awesome-gpt) - A curated list of awesome projects and resources related to GPT, ChatGPT, OpenAI, LLM, and more.
-- [Awesome GPT-3](https://github.com/elyase/awesome-gpt3) - a collection of demos and articles about the [OpenAI GPT-3 API](https://openai.com/blog/openai-api/).
-- [Awesome LLM Human Preference Datasets](https://github.com/PolisAI/awesome-llm-human-preference-datasets) - a collection of human preference datasets for LLM instruction tuning, RLHF and evaluation.
-- [RWKV-howto](https://github.com/Hannibal046/RWKV-howto) - possibly useful materials and tutorial for learning RWKV.
-- [ModelEditingPapers](https://github.com/zjunlp/ModelEditingPapers) - A paper & resource list on model editing for large language models.
-- [Awesome LLM Security](https://github.com/corca-ai/awesome-llm-security) - A curation of awesome tools, documents and projects about LLM Security.
-- [Awesome-Align-LLM-Human](https://github.com/GaryYufei/AlignLLMHumanSurvey) - A collection of papers and resources about aligning large language models (LLMs) with human.
-- [Awesome-Code-LLM](https://github.com/huybery/Awesome-Code-LLM) - An awesome and curated list of best code-LLM for research.
-- [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression) - Awesome LLM compression research papers and tools.
-- [awesome-llm-webapps](https://github.com/snowfort-ai/awesome-llm-webapps) - A collection of open source, actively maintained web apps for LLM applications.
-- [awesome-japanese-llm](https://github.com/llm-jp/awesome-japanese-llm) - 日本語LLMまとめ - Overview of Japanese LLMs.
-- [Awesome-LLM-Healthcare](https://github.com/mingze-yuan/Awesome-LLM-Healthcare) - The paper list of the review on LLMs in medicine.
-- [Awesome-LLM-3D](https://github.com/ActiveVisionLab/Awesome-LLM-3D) - A curated list of Multi-modal Large Language Model in 3D world, including 3D understanding, reasoning, generation, and embodied agents.
-- [LLMDatahub](https://github.com/Zjh-819/LLMDataHub) - a curated collection of datasets specifically designed for chatbot training, including links, size, language, usage, and a brief description of each dataset
-- [Awesome-Chinese-LLM](https://github.com/HqWu-HITCS/Awesome-Chinese-LLM) - 整理开源的中文大语言模型，以规模较小、可私有化部署、训练成本较低的模型为主，包括底座模型，垂直领域微调及应用，数据集与教程等。
+Topic-specific reading lists complement the chronological milestones. Local paper guides live in `paper_list/llm/`; systems papers live separately in `paper_list/ai_infra/`.
 
-- [LLM4Opt](https://github.com/FeiLiu36/LLM4Opt) - Applying Large language models (LLMs) for diverse optimization tasks (Opt) is an emerging research area. This is a collection of references and papers of LLM4Opt.
+#### Architecture, Scaling, and Pretraining
 
-- [awesome-language-model-analysis](https://github.com/Furyton/awesome-language-model-analysis) - This paper list focuses on the theoretical or empirical analysis of language models, e.g., the learning dynamics, expressive capacity, interpretability, generalization, and other interesting topics.
-  
-</details>
+- [Mixture-of-Experts](paper_list/llm/moe.md) - Sparse architectures and model scaling before expert-parallel infrastructure.
+- [Code Language Models](paper_list/llm/code_pretraining.md) - Code pretraining, coding workloads, and open code models.
+- [RWKV-howto](https://github.com/Hannibal046/RWKV-howto) - Materials and tutorials for learning RWKV.
+- [ModelEditingPapers](https://github.com/zjunlp/ModelEditingPapers) - Model editing research for large language models.
+- [awesome-language-model-analysis](https://github.com/Furyton/awesome-language-model-analysis) - Learning dynamics, expressive capacity, interpretability, and generalization.
 
-## LLM Leaderboard
-- [Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard) - a benchmark platform for large language models (LLMs) that features anonymous, randomized battles in a crowdsourced manner.
-- [LiveBench](https://livebench.ai/#/) - A Challenging, Contamination-Free LLM Benchmark.
-- [Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard) - aims to track, rank, and evaluate LLMs and chatbots as they are released.
-- [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) - An Automatic Evaluator for Instruction-following Language Models using Nous benchmark suite.
-<details>
-  <summary> other leaderboards </summary>
+#### Instruction Tuning, Alignment, and Reinforcement Learning
 
-- [ACLUE](https://github.com/isen-zhang/ACLUE) - an evaluation benchmark focused on ancient Chinese language comprehension. 
-- [BeHonest](https://gair-nlp.github.io/BeHonest/#leaderboard) - A pioneering benchmark specifically designed to assess honesty in LLMs comprehensively. 
-- [Berkeley Function-Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html) - evaluates LLM's ability to call external functions/tools.
-- [Chinese Large Model Leaderboard](https://github.com/jeinlee1991/chinese-llm-benchmark) - an expert-driven benchmark for Chineses LLMs.
-- [CompassRank](https://rank.opencompass.org.cn) - CompassRank is dedicated to exploring the most advanced language and visual models, offering a comprehensive, objective, and neutral evaluation reference for the industry and research.
-- [CompMix](https://qa.mpi-inf.mpg.de/compmix) - a benchmark evaluating QA methods that operate over a mixture of heterogeneous input sources (KB, text, tables, infoboxes).
-- [DreamBench++](https://dreambenchplus.github.io/#leaderboard) - a benchmark for evaluating the performance of large language models (LLMs) in various tasks related to both textual and visual imagination.
-- [FELM](https://hkust-nlp.github.io/felm) - a meta-benchmark that evaluates how well factuality evaluators assess the outputs of large language models (LLMs). 
-- [InfiBench](https://infi-coder.github.io/infibench) - a benchmark designed to evaluate large language models (LLMs) specifically in their ability to answer real-world coding-related questions.
-- [LawBench](https://lawbench.opencompass.org.cn/leaderboard) - a benchmark designed to evaluate large language models in the legal domain.
-- [LLMEval](http://llmeval.com) - focuses on understanding how these models perform in various scenarios and analyzing results from an interpretability perspective. 
-- [M3CoT](https://lightchen233.github.io/m3cot.github.io/leaderboard.html) - a benchmark that evaluates large language models on a variety of multimodal reasoning tasks, including language, natural and social sciences, physical and social commonsense, temporal reasoning, algebra, and geometry.
-- [MathEval](https://matheval.ai) - a comprehensive benchmarking platform designed to evaluate large models' mathematical abilities across 20 fields and nearly 30,000 math problems.
-- [MixEval](https://mixeval.github.io/#leaderboard) - a ground-truth-based dynamic benchmark derived from off-the-shelf benchmark mixtures, which evaluates LLMs with a highly capable model ranking (i.e., 0.96 correlation with Chatbot Arena) while running locally and quickly (6% the time and cost of running MMLU).
-- [MMedBench](https://henrychur.github.io/MultilingualMedQA) - a benchmark that evaluates large language models' ability to answer medical questions across multiple languages. 
-- [MMToM-QA](https://chuanyangjin.com/mmtom-qa-leaderboard) - a multimodal question-answering benchmark designed to evaluate AI models' cognitive ability to understand human beliefs and goals.
-- [OlympicArena](https://gair-nlp.github.io/OlympicArena/#leaderboard) - a benchmark for evaluating AI models across multiple academic disciplines like math, physics, chemistry, biology, and more.
-- [PubMedQA](https://pubmedqa.github.io) - a biomedical question-answering benchmark designed for answering research-related questions using PubMed abstracts.
-- [SciBench](https://scibench-ucla.github.io/#leaderboard) -  benchmark designed to evaluate large language models (LLMs) on solving complex, college-level scientific problems from domains like chemistry, physics, and mathematics.
-- [SuperBench](https://fm.ai.tsinghua.edu.cn/superbench/#/leaderboard) - a benchmark platform designed for evaluating large language models (LLMs) on a range of tasks, particularly focusing on their performance in different aspects such as natural language understanding, reasoning, and generalization. 
-- [SuperLim](https://lab.kb.se/leaderboard/results) - a Swedish language understanding benchmark that evaluates natural language processing (NLP) models on various tasks such as argumentation analysis, semantic similarity, and textual entailment.
-- [TAT-DQA](https://nextplusplus.github.io/TAT-DQA) - a large-scale Document Visual Question Answering (VQA) dataset designed for complex document understanding, particularly in financial reports.
-- [TAT-QA](https://nextplusplus.github.io/TAT-QA) - a large-scale question-answering benchmark focused on real-world financial data, integrating both tabular and textual information.
-- [VisualWebArena](https://jykoh.com/vwa) - a benchmark designed to assess the performance of multimodal web agents on realistic visually grounded tasks.
-- [We-Math](https://we-math.github.io/#leaderboard) - a benchmark that evaluates large multimodal models (LMMs) on their ability to perform human-like mathematical reasoning.
-- [WHOOPS!](https://whoops-benchmark.github.io) - a benchmark dataset testing AI's ability to reason about visual commonsense through images that defy normal expectations.
+- [Instruction Tuning](paper_list/llm/instruction_tuning.md) - Cross-task generalization and supervised instruction tuning.
+- [Alignment](paper_list/llm/alignment.md) - Human preferences, self-alignment, and alignment limitations.
+- [RLHF](paper_list/llm/rlhf.md) - InstructGPT, Constitutional AI, and DPO starting points.
+- [Reinforcement Learning for LLMs](paper_list/llm/reinforcement_learning.md) - PPO, GRPO, reasoning, verifiable rewards, agents, and capability analysis. Continue with [RL training systems](paper_list/ai_infra/reinforcement_learning.md) for infrastructure.
+- [Instruction-Tuning-Papers](https://github.com/SinclairCoder/Instruction-Tuning-Papers) - A broader instruction-tuning paper collection.
+- [Awesome-Align-LLM-Human](https://github.com/GaryYufei/AlignLLMHumanSurvey) - Papers on aligning LLMs with humans.
 
-</details>
+#### Prompting, In-context Learning, and Reasoning
 
+- [Prompt Learning](paper_list/llm/prompt_learning.md) - Prompt-based learning methods and surveys.
+- [In-context Learning](paper_list/llm/in_context_learning.md) - Learning from examples supplied in context.
+- [Chain-of-Thought](paper_list/llm/chain_of_thought.md) - Intermediate reasoning and related paper collections.
+- [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) - Prompt examples.
+- [awesome-chatgpt-prompts-zh](https://github.com/PlexPt/awesome-chatgpt-prompts-zh) - Chinese prompt examples.
+- [Chain-of-Thoughts Papers](https://github.com/Timothyxxx/Chain-of-ThoughtsPapers) - Chain-of-thought research papers.
+- [Awesome Deliberative Prompting](https://github.com/logikon-ai/awesome-deliberative-prompting) - Reliable reasoning and reason-responsive decisions.
+- [Reasoning using Language Models](https://github.com/atfortes/LM-Reasoning-Papers) - Language-model reasoning research.
+- [Chain-of-Thought Hub](https://github.com/FranxYao/chain-of-thought-hub) - Measuring reasoning performance.
 
-## Open LLM
+#### Retrieval, Augmentation, and Applications
+
+- [Retrieval-Augmented Generation](paper_list/llm/retrieval_augmented_generation.md) - Retrieval and generation with external knowledge.
+- [Augmentation](paper_list/llm/augmentation.md) - External knowledge, feedback, memory, and augmented models.
+- [Application Papers](paper_list/llm/application.md) - Task-specific uses of language models.
+- [awesome-llm-webapps](https://github.com/snowfort-ai/awesome-llm-webapps) - Open-source LLM web applications.
+- [Awesome-LLM-Healthcare](https://github.com/mingze-yuan/Awesome-LLM-Healthcare) - LLMs in medicine.
+- [Awesome-LLM-3D](https://github.com/ActiveVisionLab/Awesome-LLM-3D) - 3D understanding, reasoning, generation, and embodied agents.
+- [LLM4Opt](https://github.com/FeiLiu36/LLM4Opt) - Language models for optimization tasks.
+
+#### Evaluation, Hallucination, and Safety
+
+- [Evaluation Papers](paper_list/llm/evaluation.md) - Capability and output-quality evaluation.
+- [Generated-text Detection](paper_list/llm/detection.md) - Detecting LLM-generated text.
+- [Awesome-LLM-hallucination](https://github.com/LuckyyySTA/Awesome-LLM-hallucination) - Hallucination research papers.
+- [awesome-hallucination-detection](https://github.com/EdinburghNLP/awesome-hallucination-detection) - Hallucination detection papers.
+- [Awesome LLM Security](https://github.com/corca-ai/awesome-llm-security) - LLM security resources.
+
+#### General and Language-specific Collections
+
+- [LLMsPracticalGuide](https://github.com/Mooler0410/LLMsPracticalGuide) - Practical LLM resources.
+- [LLM Reading List](https://github.com/crazyofapple/Reading_groups/) - Papers and resources on large language models.
+- [Awesome ChatGPT](https://github.com/humanloop/awesome-chatgpt) - ChatGPT and GPT-3 resources.
+- [Awesome GPT](https://github.com/formulahendry/awesome-gpt) - GPT, ChatGPT, and related projects.
+- [Awesome GPT-3](https://github.com/elyase/awesome-gpt3) - Demos and articles about the [OpenAI GPT-3 API](https://openai.com/blog/openai-api/).
+- [awesome-japanese-llm](https://github.com/llm-jp/awesome-japanese-llm) - Overview of Japanese LLMs.
+- [Awesome-Chinese-LLM](https://github.com/HqWu-HITCS/Awesome-Chinese-LLM) - Chinese models, datasets, and tutorials.
+
+### Recent Research
+
+Sources checked on **2026-10-15**. Paper dates and model launch dates are distinguished in the linked lists.
+
+- [Recent Frontier Model Reports](paper_list/llm/frontier_models.md) - MiMo, Kimi, and DeepSeek papers with dates, contributions, and official resources; GPT-6 Astra is covered through verified official documentation.
+- [Reinforcement Learning for LLMs](paper_list/llm/reinforcement_learning.md) - RLHF, PPO, GRPO, DAPO, GSPO, verifiable rewards, agent training, and recent analysis, with paper summaries and a suggested reading path.
+- [RLHF Starting Points](paper_list/llm/rlhf.md) - InstructGPT, Constitutional AI, and the RL-free DPO comparison.
+
+### Trending LLM Projects
+
+- [MiMo-V2.6](https://arxiv.org/abs/2610.11959) - Xiaomi's report on scaling asynchronous, mixed-domain reinforcement learning towards model self-improvement.
+- [Kimi K3](https://github.com/MoonshotAI/Kimi-K3) - Open MoE model with native vision, million-token context, and agentic reinforcement learning.
+- [DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) - Multimodal MoE model with compressed KV caching and million-token context.
+- [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra) - Official OpenAI model documentation for reasoning, coding, and multi-step tool workflows.
+- [TinyZero](https://github.com/Jiayi-Pan/TinyZero) - Clean, minimal, accessible reproduction of DeepSeek R1-Zero
+- [open-r1](https://github.com/huggingface/open-r1) - Fully open reproduction of DeepSeek-R1
+- [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - First-generation reasoning models from DeepSeek.
+- [Qwen2.5-Max](https://qwenlm.github.io/blog/qwen2.5-max/) - Exploring the Intelligence of Large-scale MoE Model.
+- [OpenAI o3-mini](https://openai.com/index/openai-o3-mini/) - Pushing the frontier of cost-effective reasoning.
+- [DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3) - First open-sourced GPT-4o level model.
+- [Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) - MoE language model with 32B active and 1T total parameters.
+
+### Open LLM
 <details>
 <summary>DeepSeek</summary>
   
@@ -521,7 +372,7 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 <details>
 <summary>RWKV Foundation</summary>
 
-  - [RWKV-v4|5|6](https://huggingface.co/RWKV)minicpm-2b-65d48bf958302b9fd25b698f)
+  - [RWKV-v4|5|6](https://huggingface.co/RWKV)
 
 </details>
 
@@ -577,57 +428,118 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
     
 </details>
 
+### LLM Data
 
-## LLM Applications
+Dataset collections and data availability are model-learning prerequisites; scalable processing tools are listed separately under [Data Pipelines](#data-pipelines).
+
+- [LLMDataHub](https://github.com/Zjh-819/LLMDataHub) - A collection of LLM training datasets with links, sizes, languages, and usage descriptions.
+- [Awesome LLM Human Preference Datasets](https://github.com/PolisAI/awesome-llm-human-preference-datasets) - Human preference datasets for instruction tuning, RLHF, and evaluation.
+- [Major LLMs + Data Availability](https://docs.google.com/spreadsheets/d/1bmpDdLZxvTCleLGVPgzoMTQ0iDP2-7v7QziPrzPdHyM/edit#gid=0) - Model and data availability reference.
+
+### LLM Evaluation
+
+Evaluate model capabilities and application quality here; measure throughput, latency, memory, and cost under [infrastructure profiling](#profiling-benchmarks-and-observability).
+
+- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) - A framework for few-shot evaluation of language models.
+- [lighteval](https://github.com/huggingface/lighteval) - a lightweight LLM evaluation suite that Hugging Face has been using internally.
+- [simple-evals](https://github.com/openai/simple-evals) - Eval tools by OpenAI.
+
+<details>
+<summary>other evaluation frameworks</summary>
+
+- [OLMO-eval](https://github.com/allenai/OLMo-Eval) - a repository for evaluating open language models.
+- [MixEval](https://github.com/Psycoy/MixEval) - A reliable click-and-go evaluation suite compatible with both open-source and proprietary models, supporting MixEval and other benchmarks.
+- [HELM](https://github.com/stanford-crfm/helm) - Holistic Evaluation of Language Models (HELM), a framework to increase the transparency of language models.
+- [instruct-eval](https://github.com/declare-lab/instruct-eval) - This repository contains code to quantitatively evaluate instruction-tuned models such as Alpaca and Flan-T5 on held-out tasks.
+- [Giskard](https://github.com/Giskard-AI/giskard) - Testing & evaluation library for LLM applications, in particular RAGs
+- [LangSmith](https://www.langchain.com/langsmith) - a unified platform from LangChain framework for: evaluation, collaboration HITL (Human In The Loop), logging and monitoring LLM applications.
+- [Ragas](https://github.com/explodinggradients/ragas) - a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines.
+
+</details>
+
+#### Application and Prompt Evaluation
+
+- [promptfoo](https://github.com/typpo/promptfoo) - Prompt and output regression testing.
+- [Opik](https://github.com/comet-ml/opik) - Evaluation and testing across development and production.
+- [Evidently](https://github.com/evidentlyai/evidently) - Evaluate, test, and monitor ML and LLM output quality.
+- [Prompttools](https://github.com/hegelai/prompttools) - Testing and evaluation for models, vector databases, and prompts.
+- [OpenAI Evals](https://github.com/openai/evals) - Task-performance evaluation for language models and prompts.
+
+### LLM Leaderboard
+- [Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard) - a benchmark platform for large language models (LLMs) that features anonymous, randomized battles in a crowdsourced manner.
+- [LiveBench](https://livebench.ai/#/) - A Challenging, Contamination-Free LLM Benchmark.
+- [Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard) - aims to track, rank, and evaluate LLMs and chatbots as they are released.
+- [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/) - An Automatic Evaluator for Instruction-following Language Models using Nous benchmark suite.
+<details>
+  <summary> other leaderboards </summary>
+
+- [ACLUE](https://github.com/isen-zhang/ACLUE) - an evaluation benchmark focused on ancient Chinese language comprehension.
+- [BeHonest](https://gair-nlp.github.io/BeHonest/#leaderboard) - A pioneering benchmark specifically designed to assess honesty in LLMs comprehensively.
+- [Berkeley Function-Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html) - evaluates LLM's ability to call external functions/tools.
+- [Chinese Large Model Leaderboard](https://github.com/jeinlee1991/chinese-llm-benchmark) - an expert-driven benchmark for Chineses LLMs.
+- [CompassRank](https://rank.opencompass.org.cn) - CompassRank is dedicated to exploring the most advanced language and visual models, offering a comprehensive, objective, and neutral evaluation reference for the industry and research.
+- [CompMix](https://qa.mpi-inf.mpg.de/compmix) - a benchmark evaluating QA methods that operate over a mixture of heterogeneous input sources (KB, text, tables, infoboxes).
+- [DreamBench++](https://dreambenchplus.github.io/#leaderboard) - a benchmark for evaluating the performance of large language models (LLMs) in various tasks related to both textual and visual imagination.
+- [FELM](https://hkust-nlp.github.io/felm) - a meta-benchmark that evaluates how well factuality evaluators assess the outputs of large language models (LLMs).
+- [InfiBench](https://infi-coder.github.io/infibench) - a benchmark designed to evaluate large language models (LLMs) specifically in their ability to answer real-world coding-related questions.
+- [LawBench](https://lawbench.opencompass.org.cn/leaderboard) - a benchmark designed to evaluate large language models in the legal domain.
+- [LLMEval](http://llmeval.com) - focuses on understanding how these models perform in various scenarios and analyzing results from an interpretability perspective.
+- [M3CoT](https://lightchen233.github.io/m3cot.github.io/leaderboard.html) - a benchmark that evaluates large language models on a variety of multimodal reasoning tasks, including language, natural and social sciences, physical and social commonsense, temporal reasoning, algebra, and geometry.
+- [MathEval](https://matheval.ai) - a comprehensive benchmarking platform designed to evaluate large models' mathematical abilities across 20 fields and nearly 30,000 math problems.
+- [MixEval](https://mixeval.github.io/#leaderboard) - a ground-truth-based dynamic benchmark derived from off-the-shelf benchmark mixtures, which evaluates LLMs with a highly capable model ranking (i.e., 0.96 correlation with Chatbot Arena) while running locally and quickly (6% the time and cost of running MMLU).
+- [MMedBench](https://henrychur.github.io/MultilingualMedQA) - a benchmark that evaluates large language models' ability to answer medical questions across multiple languages.
+- [MMToM-QA](https://chuanyangjin.com/mmtom-qa-leaderboard) - a multimodal question-answering benchmark designed to evaluate AI models' cognitive ability to understand human beliefs and goals.
+- [OlympicArena](https://gair-nlp.github.io/OlympicArena/#leaderboard) - a benchmark for evaluating AI models across multiple academic disciplines like math, physics, chemistry, biology, and more.
+- [PubMedQA](https://pubmedqa.github.io) - a biomedical question-answering benchmark designed for answering research-related questions using PubMed abstracts.
+- [SciBench](https://scibench-ucla.github.io/#leaderboard) -  benchmark designed to evaluate large language models (LLMs) on solving complex, college-level scientific problems from domains like chemistry, physics, and mathematics.
+- [SuperBench](https://fm.ai.tsinghua.edu.cn/superbench/#/leaderboard) - a benchmark platform designed for evaluating large language models (LLMs) on a range of tasks, particularly focusing on their performance in different aspects such as natural language understanding, reasoning, and generalization.
+- [SuperLim](https://lab.kb.se/leaderboard/results) - a Swedish language understanding benchmark that evaluates natural language processing (NLP) models on various tasks such as argumentation analysis, semantic similarity, and textual entailment.
+- [TAT-DQA](https://nextplusplus.github.io/TAT-DQA) - a large-scale Document Visual Question Answering (VQA) dataset designed for complex document understanding, particularly in financial reports.
+- [TAT-QA](https://nextplusplus.github.io/TAT-QA) - a large-scale question-answering benchmark focused on real-world financial data, integrating both tabular and textual information.
+- [VisualWebArena](https://jykoh.com/vwa) - a benchmark designed to assess the performance of multimodal web agents on realistic visually grounded tasks.
+- [We-Math](https://we-math.github.io/#leaderboard) - a benchmark that evaluates large multimodal models (LMMs) on their ability to perform human-like mathematical reasoning.
+- [WHOOPS!](https://whoops-benchmark.github.io) - a benchmark dataset testing AI's ability to reason about visual commonsense through images that defy normal expectations.
+
+</details>
+
+### LLM Applications
 > Reference: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)
 - [dspy](https://github.com/stanfordnlp/dspy) - DSPy: The framework for programming—not prompting—foundation models.
 - [LangChain](https://github.com/hwchase17/langchain) — A popular Python/JavaScript library for chaining sequences of language model prompts.
 - [LlamaIndex](https://github.com/jerryjliu/llama_index) — A Python library for augmenting LLM apps with data.
+- [Haystack](https://haystack.deepset.ai/) - An NLP framework for building applications with language models and your own data.
 
 <details>
 <summary>more applications</summary>
 
 
-- [MLflow](https://mlflow.org/) - MLflow: An open-source framework for the end-to-end machine learning lifecycle, helping developers track experiments, evaluate models/prompts, deploy models, and add observability with tracing.
-- [Swiss Army Llama](https://github.com/Dicklesworthstone/swiss_army_llama) - Comprehensive set of tools for working with local LLMs for various tasks.
 - [LiteChain](https://github.com/rogeriochaves/litechain) - Lightweight alternative to LangChain for composing LLMs 
 - [magentic](https://github.com/jackmpcollins/magentic) - Seamlessly integrate LLMs as Python functions
 - [wechat-chatgpt](https://github.com/fuergaosi233/wechat-chatgpt) - Use ChatGPT On Wechat via wechaty
-- [promptfoo](https://github.com/typpo/promptfoo) - Test your prompts. Evaluate and compare LLM outputs, catch regressions, and improve prompt quality.
 - [Agenta](https://github.com/agenta-ai/agenta) -  Easily build, version, evaluate and deploy your LLM-powered apps.
 - [Serge](https://github.com/serge-chat/serge) - a chat interface crafted with llama.cpp for running Alpaca models. No API keys, entirely self-hosted!
 - [Langroid](https://github.com/langroid/langroid) - Harness LLMs with Multi-Agent Programming
 - [Embedchain](https://github.com/embedchain/embedchain) - Framework to create ChatGPT like bots over your dataset.
-- [Opik](https://github.com/comet-ml/opik) - Confidently evaluate, test, and ship LLM applications with a suite of observability tools to calibrate language model outputs across your dev and production lifecycle.
 - [IntelliServer](https://github.com/intelligentnode/IntelliServer) - simplifies the evaluation of LLMs by providing a unified microservice to access and test multiple AI models.
 - [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) - Formerly langchain-ChatGLM, local knowledge based LLM (like ChatGLM) QA app with langchain.
 - [Search with Lepton](https://github.com/leptonai/search_with_lepton) - Build your own conversational search engine using less than 500 lines of code by [LeptonAI](https://github.com/leptonai).
 - [Robocorp](https://github.com/robocorp/robocorp) - Create, deploy and operate Actions using Python anywhere to enhance your AI agents and assistants. Batteries included with an extensive set of libraries, helpers and logging.
 - [Tune Studio](https://studio.tune.app/) - Playground for devs to finetune & deploy LLMs
 - [LLocalSearch](https://github.com/nilsherzig/LLocalSearch) - Locally running websearch using LLM chains
-- [AI Gateway](https://github.com/Portkey-AI/gateway) — Gateway streamlines requests to 100+ open & closed source models with a unified API. It is also production-ready with support for caching, fallbacks, retries, timeouts, loadbalancing, and can be edge-deployed for minimum latency.
 - [talkd.ai dialog](https://github.com/talkdai/dialog) - Simple API for deploying any RAG or LLM that you want adding plugins.
-- [Wllama](https://github.com/ngxson/wllama) - WebAssembly binding for llama.cpp - Enabling in-browser LLM inference
-- [GPUStack](https://github.com/gpustack/gpustack) - An open-source GPU cluster manager for running LLMs
-- [MNN-LLM](https://github.com/alibaba/MNN) -- A Device-Inference framework, including LLM Inference on device(Mobile Phone/PC/IOT)
 - [CAMEL](https://www.camel-ai.org/) - First LLM Multi-agent framework. 
 - [QA-Pilot](https://github.com/reid41/QA-Pilot) - An interactive chat project that leverages Ollama/OpenAI/MistralAI LLMs for rapid understanding and navigation of GitHub code repository or compressed file resources.
 - [Shell-Pilot](https://github.com/reid41/shell-pilot) - Interact with LLM using Ollama models(or openAI, mistralAI)via pure shell scripts on your Linux(or MacOS) system, enhancing intelligent system management without any dependencies.
 - [MindSQL](https://github.com/Mindinventory/MindSQL) - A python package for Txt-to-SQL with self hosting functionalities and RESTful APIs compatible with proprietary as well as open source LLM.
-- [Langfuse](https://github.com/langfuse/langfuse) -  Open Source LLM Engineering Platform 🪢 Tracing, Evaluations, Prompt Management, Evaluations and Playground. 
 - [AdalFlow](https://github.com/SylphAI-Inc/AdalFlow) - AdalFlow: The library to build&auto-optimize LLM applications.
 - [Guidance](https://github.com/microsoft/guidance) — A handy looking Python library from Microsoft that uses Handlebars templating to interleave generation, prompting, and logical control.
-- [Evidently](https://github.com/evidentlyai/evidently) — An open-source framework to evaluate, test and monitor ML and LLM-powered systems.
 - [Chainlit](https://docs.chainlit.io/overview) — A Python library for making chatbot interfaces.
 - [Guardrails.ai](https://www.guardrailsai.com/docs/) — A Python library for validating outputs and retrying failures. Still in alpha, so expect sharp edges and bugs.
 - [Semantic Kernel](https://github.com/microsoft/semantic-kernel) — A Python/C#/Java library from Microsoft that supports prompt templating, function chaining, vectorized memory, and intelligent planning.
-- [Prompttools](https://github.com/hegelai/prompttools) — Open-source Python tools for testing and evaluating models, vector DBs, and prompts.
 - [Outlines](https://github.com/normal-computing/outlines) — A Python library that provides a domain-specific language to simplify prompting and constrain generation.
 - [Promptify](https://github.com/promptslab/Promptify) — A small Python library for using language models to perform NLP tasks.
 - [Scale Spellbook](https://scale.com/spellbook) — A paid product for building, comparing, and shipping language model apps.
 - [PromptPerfect](https://promptperfect.jina.ai/prompts) — A paid product for testing and improving prompts.
-- [Weights & Biases](https://wandb.ai/site/solutions/llmops) — A paid product for tracking model training and prompt engineering experiments.
-- [OpenAI Evals](https://github.com/openai/evals) — An open-source library for evaluating task performance of language models and prompts.
 
 - [Arthur Shield](https://www.arthur.ai/get-started) — A paid product for detecting toxicity, hallucination, prompt injection, etc.
 - [LMQL](https://lmql.ai) — A programming language for LLM interaction with support for typed prompting, control flow, constraints, and tools.
@@ -635,22 +547,18 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 - [OneKE](https://openspg.yuque.com/ndx6g9/ps5q6b/vfoi61ks3mqwygvy) — A bilingual Chinese-English knowledge extraction model with knowledge graphs and natural language processing technologies.
 - [llm-ui](https://github.com/llm-ui-kit/llm-ui) - A React library for building LLM UIs.
 - [Wordware](https://www.wordware.ai) - A web-hosted IDE where non-technical domain experts work with AI Engineers to build task-specific AI agents. We approach prompting as a new programming language rather than low/no-code blocks.
-- [Wallaroo.AI](https://github.com/WallarooLabs) - Deploy, manage, optimize any model at scale across any environment from cloud to edge. Let's you go from python notebook to inferencing in minutes.
 - [Dify](https://github.com/langgenius/dify) - An open-source LLM app development platform with an intuitive interface that streamlines AI workflows, model management, and production deployment.
 - [LazyLLM](https://github.com/LazyAGI/LazyLLM) - An open-source LLM app for building multi-agent LLMs applications in an easy and lazy way, supports model deployment and fine-tuning.
 - [MemFree](https://github.com/memfreeme/memfree) - Open Source Hybrid AI Search Engine, Instantly Get Accurate Answers from the Internet, Bookmarks, Notes, and Docs. Support One-Click Deployment
 - [AutoRAG](https://github.com/Marker-Inc-Korea/AutoRAG) - Open source AutoML tool for RAG. Optimize the RAG answer quality automatically. From generation evaluation datset to deploying optimized RAG pipeline.
 - [Epsilla](https://github.com/epsilla-cloud) - An all-in-one LLM Agent platform with your private data and knowledge, delivers your production-ready AI Agents on Day 1.
-- [Arize-Phoenix](https://phoenix.arize.com/) - Open-source tool for ML observability that runs in your notebook environment. Monitor and fine tune LLM, CV and Tabular Models.
-- [LLM]([https://github.com/simonw/llm) - A CLI utility and Python library for interacting with Large Language Models, both via remote APIs and models that can be installed and run on your own machine.
+- [LLM](https://github.com/simonw/llm) - A CLI utility and Python library for interacting with Large Language Models, both via remote APIs and models that can be installed and run on your own machine.
 - [Just-Chat](https://github.com/longevity-genie/just-chat) - Make your LLM agent and chat with it simple and fast!
 - [Agentic Radar](https://github.com/splx-ai/agentic-radar) - Open-source CLI security scanner for agentic workflows. Scans your workflow’s source code, detects vulnerabilities, and generates an interactive visualization along with a detailed security report. Supports LangGraph, CrewAI, n8n, OpenAI Agents, and more.
-- [LangWatch](https://github.com/langwatch/langwatch) - Open-source LLM observability, prompt evaulation, and prompt optimzation platform.
-- [TensorZero](https://www.tensorzero.com/) - TensorZero is an open-source framework for building production-grade LLM applications. It unifies an LLM gateway, observability, optimization, evaluations, and experimentation.
 
 </details>
 
-## LLM Tutorials and Courses
+### LLM Tutorials and Courses
 - [Andrej Karpathy Series](https://www.youtube.com/@AndrejKarpathy) - My favorite!
 - [Umar Jamil Series](https://www.youtube.com/@umarjamilai) - high quality and educational videos you don't want to miss.
 - [Alexander Rush Series](https://rush-nlp.com/projects/) - high quality and educational materials you don't want to miss.
@@ -666,20 +574,17 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 - [minbpe](https://www.youtube.com/watch?v=zduSFxRajkE&t=1157s) - Minimal, clean code for the Byte Pair Encoding (BPE) algorithm commonly used in LLM tokenization.
 - [femtoGPT](https://github.com/keyvank/femtoGPT) - Pure Rust implementation of a minimal Generative Pretrained Transformer.
 - [Neurips2022-Foundational Robustness of Foundation Models](https://nips.cc/virtual/2022/tutorial/55796)
-- [ICML2022-Welcome to the "Big Model" Era: Techniques and Systems to Train and Serve Bigger Models](https://icml.cc/virtual/2022/tutorial/18440)
 - [GPT in 60 Lines of NumPy](https://jaykmody.com/blog/gpt-from-scratch/)
 - [LLM‑RL‑Visualized (EN)](https://github.com/changyeyu/LLM-RL-Visualized/blob/master/src/README_EN.md) | [LLM‑RL‑Visualized (中文)](https://github.com/changyeyu/LLM-RL-Visualized) - 100+  LLM / RL Algorithm Maps📚.
 
-
-## LLM Books
+### LLM Books
 - [Generative AI with LangChain: Build large language model (LLM) apps with Python, ChatGPT, and other LLMs](https://amzn.to/3GUlRng) - it comes with a [GitHub repository](https://github.com/benman1/generative_ai_with_langchain) that showcases a lot of the functionality
 - [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch) - A guide to building your own working LLM.
 - [BUILD GPT: HOW AI WORKS](https://www.amazon.com/dp/9152799727?ref_=cm_sw_r_cp_ud_dp_W3ZHCD6QWM3DPPC0ARTT_1) - explains how to code a Generative Pre-trained Transformer, or GPT, from scratch.
 - [Hands-On Large Language Models: Language Understanding and Generation](https://www.llm-book.com/) - Explore the world of Large Language Models with over 275 custom made figures in this illustrated guide!
 - [The Chinese Book for Large Language Models](http://aibox.ruc.edu.cn/zws/index.htm) - An Introductory LLM Textbook Based on [*A Survey of Large Language Models*](https://arxiv.org/abs/2303.18223).
 
-## Great thoughts about LLM
-- [Why did all of the public reproduction of GPT-3 fail?](https://jingfengyang.github.io/gpt)
+### Great thoughts about LLM
 - [A Stage Review of Instruction Tuning](https://yaofu.notion.site/June-2023-A-Stage-Review-of-Instruction-Tuning-f59dbfc36e2d4e12a33443bd6b2012c2)
 - [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - [Why you should work on AI AGENTS!](https://www.youtube.com/watch?v=fqVLjtvWgq8)
@@ -689,17 +594,15 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 - [Noam Chomsky: The False Promise of ChatGPT](https://www.nytimes.com/2023/03/08/opinion/noam-chomsky-chatgpt-ai.html)
 - [Is ChatGPT 175 Billion Parameters? Technical Analysis](https://orenleung.super.site/is-chatgpt-175-billion-parameters-technical-analysis)
 - [The Next Generation Of Large Language Models ](https://www.notion.so/Awesome-LLM-40c8aa3f2b444ecc82b79ae8bbd2696b)
-- [Large Language Model Training in 2023](https://research.aimultiple.com/large-language-model-training/)
 - [How does GPT Obtain its Ability? Tracing Emergent Abilities of Language Models to their Sources](https://yaofu.notion.site/How-does-GPT-Obtain-its-Ability-Tracing-Emergent-Abilities-of-Language-Models-to-their-Sources-b9a57ac0fcf74f30a1ab9e3e36fa1dc1)
 - [Open Pretrained Transformers](https://www.youtube.com/watch?v=p9IxoSkvZ-M&t=4s)
 - [Scaling, emergence, and reasoning in large language models](https://docs.google.com/presentation/d/1EUV7W7X_w0BDrscDhPg7lMGzJCkeaPkGCJ3bN8dluXc/edit?pli=1&resourcekey=0-7Nz5A7y8JozyVrnDtcEKJA#slide=id.g16197112905_0_0)
 
-## Miscellaneous
+### Miscellaneous
 
 
 - [Emergent Mind](https://www.emergentmind.com) - The latest AI news, curated & explained by GPT-4.
 - [ShareGPT](https://sharegpt.com) - Share your wildest ChatGPT conversations with one click.
-- [Major LLMs + Data Availability](https://docs.google.com/spreadsheets/d/1bmpDdLZxvTCleLGVPgzoMTQ0iDP2-7v7QziPrzPdHyM/edit#gid=0)
 - [500+ Best AI Tools](https://vaulted-polonium-23c.notion.site/500-Best-AI-Tools-e954b36bf688404ababf74a13f98d126)
 - [Cohere Summarize Beta](https://txt.cohere.ai/summarize-beta/) - Introducing Cohere Summarize Beta: A New Endpoint for Text Summarization
 - [chatgpt-wrapper](https://github.com/mmabrouk/chatgpt-wrapper) - ChatGPT Wrapper is an open-source unofficial Python API and CLI that lets you interact with ChatGPT.
@@ -710,11 +613,156 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 - [chatgpt-shroud](https://github.com/guyShilo/chatgpt-shroud) - A Chrome extension for OpenAI's ChatGPT, enhancing user privacy by enabling easy hiding and unhiding of chat history. Ideal for privacy during screen shares.
 - [AI For Developers](https://aifordevelopers.org) - List of AI Tools and Agents for Developers
 
+## AI Infra
+
+Systems knowledge builds on the [LLM foundations](#llm) above: model architecture informs parallelism and memory layout; post-training algorithms inform rollout and training orchestration; application workloads inform serving and latency requirements.
+
+### AI Infra Highlights
+
+- **Distributed training:** [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), [DeepSpeed](https://github.com/microsoft/DeepSpeed), and [torchtitan](https://github.com/pytorch/torchtitan).
+- **RL and post-training systems:** [verl](https://github.com/verl-project/verl), [miles](https://github.com/radixark/miles), [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF), and [ROLL](https://github.com/alibaba/ROLL).
+- **Inference and serving:** [SGLang](https://github.com/sgl-project/sglang), [vLLM](https://github.com/vllm-project/vllm), and [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM).
+- **GPU kernels and communication:** [Triton](https://github.com/triton-lang/triton), [CUTLASS](https://github.com/NVIDIA/cutlass), [FlashAttention](https://github.com/Dao-AILab/flash-attention), and [NCCL](https://github.com/NVIDIA/nccl).
+- **Cluster orchestration:** [Ray](https://github.com/ray-project/ray), [Kueue](https://github.com/kubernetes-sigs/kueue), and [SkyPilot](https://github.com/skypilot-org/skypilot).
+
+### AI Infra Papers
+
+- [Training and Inference Systems](paper_list/ai_infra/acceleration.md) - Model parallelism, memory optimization, IO-aware attention, KV cache management, and serving architecture.
+- [RL Training Systems](paper_list/ai_infra/reinforcement_learning.md#training-systems) - OpenRLHF and HybridFlow/verl, with emphasis on coordinating rollout generation and training.
+- [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - A broader collection of LLM systems research.
+- [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - Inference papers with implementation links.
+- [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression) - LLM compression research papers and tools.
+
+### LLM Training Frameworks
+
+- [Meta Lingua](https://github.com/facebookresearch/lingua) - a lean, efficient, and easy-to-hack codebase to research LLMs.
+- [Litgpt](https://github.com/Lightning-AI/litgpt) - 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
+- [nanotron](https://github.com/huggingface/nanotron) - Minimalistic large language model 3D-parallelism training.
+- [DeepSpeed](https://github.com/microsoft/DeepSpeed) - DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
+- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) - Ongoing research training transformer models at scale.
+- [torchtitan](https://github.com/pytorch/torchtitan) - A native PyTorch Library for large model training.
+
+<details>
+<summary>other frameworks</summary>
+
+  - [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed) - DeepSpeed version of NVIDIA's Megatron-LM that adds additional support for several features such as MoE model training, Curriculum Learning, 3D Parallelism, and others.
+  - [torchtune](https://github.com/pytorch/torchtune) - A Native-PyTorch Library for LLM Fine-tuning.
+  - [NeMo Framework](https://github.com/NVIDIA/NeMo) - Generative AI framework built for researchers and PyTorch developers working on Large Language Models (LLMs), Multimodal Models (MMs), Automatic Speech Recognition (ASR), Text to Speech (TTS), and Computer Vision (CV) domains.
+  - [Colossal-AI](https://github.com/hpcaitech/ColossalAI) - Making large AI models cheaper, faster, and more accessible.
+  - [BMTrain](https://github.com/OpenBMB/BMTrain) - Efficient Training for Big Models.
+  - [Mesh Tensorflow](https://github.com/tensorflow/mesh) - Mesh TensorFlow: Model Parallelism Made Easier.
+  - [maxtext](https://github.com/AI-Hypercomputer/maxtext) - A simple, performant and scalable Jax LLM!
+  - [GPT-NeoX](https://github.com/EleutherAI/gpt-neox) - An implementation of model parallel autoregressive transformers on GPUs, based on the DeepSpeed library.
+  - [Transformer Engine](https://github.com/NVIDIA/TransformerEngine) - A library for accelerating Transformer model training on NVIDIA GPUs.
+  - [unslothai](https://github.com/unslothai/unsloth) - A framework that specializes in efficient fine-tuning. On its GitHub page, you can find ready-to-use fine-tuning templates for various LLMs, allowing you to easily train your own data for free on the Google Colab cloud.
+  - [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) - Open-source framework for fine-tuning and evaluating LLMs. It simplifies the process of experimenting with different training configurations and makes it easy to reproduce and share results, supporting features like LoRA, QLoRA, DeepSpeed, PEFT, and multi-GPU setups.
+
+</details>
+
+### Reinforcement Learning and Post-training
+
+- [verl](https://github.com/verl-project/verl) - A flexible and efficient RL framework for LLMs; see the [RL systems paper guide](paper_list/ai_infra/reinforcement_learning.md) for its HybridFlow paper and related systems.
+- [miles](https://github.com/radixark/miles) - A reinforcement learning framework for large-scale model post-training, combining SGLang rollouts with Megatron-LM training and supporting fully asynchronous RL.
+- [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) - An Easy-to-use, Scalable and High-performance RLHF Framework (70B+ PPO Full Tuning & Iterative DPO & LoRA & RingAttention & RFT).
+- [ROLL](https://github.com/alibaba/ROLL) - An Efficient and User-Friendly Scaling Library for Reinforcement Learning with Large Language Models.
+- [TRL](https://huggingface.co/docs/trl/en/index) - TRL is a full stack library where we provide a set of tools to train transformer language models with Reinforcement Learning, from the Supervised Fine-tuning step (SFT), Reward Modeling step (RM) to the Proximal Policy Optimization (PPO) step.
+
+### LLM Inference
+
+> Reference: [llm-inference-solutions](https://github.com/mani-kantap/llm-inference-solutions)
+- [SGLang](https://github.com/sgl-project/sglang) - SGLang is a fast serving framework for large language models and vision language models.
+- [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs.
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) - LLM inference in C/C++.
+- [ollama](https://github.com/ollama/ollama) - Get up and running with Llama 3, Mistral, Gemma, and other large language models.
+- [TGI](https://huggingface.co/docs/text-generation-inference/en/index) - a toolkit for deploying and serving Large Language Models (LLMs).
+- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) - Nvidia Framework for LLM Inference
+<details>
+<summary>other deployment tools</summary>
+
+- [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) - NVIDIA Framework for LLM Inference(Transitioned to TensorRT-LLM)
+- [MInference](https://github.com/microsoft/MInference) - To speed up Long-context LLMs' inference, approximate and dynamic sparse calculate the attention, which reduces inference latency by up to 10x for pre-filling on an A100 while maintaining accuracy.
+- [exllama](https://github.com/turboderp/exllama) - A more memory-efficient rewrite of the HF transformers implementation of Llama for use with quantized weights.
+- [FastChat](https://github.com/lm-sys/FastChat) - A distributed multi-model LLM serving system with web UI and OpenAI-compatible RESTful APIs.
+- [mistral.rs](https://github.com/EricLBuehler/mistral.rs) - Blazingly fast LLM inference.
+- [OpenLLM](https://github.com/bentoml/OpenLLM) - Fine-tune, serve, deploy, and monitor any open-source LLMs in production. Used in production at [BentoML](https://bentoml.com/) for LLMs-based applications.
+- [DeepSpeed-Mii](https://github.com/microsoft/DeepSpeed-MII) -  MII makes low-latency and high-throughput inference, similar to vLLM powered by DeepSpeed.
+- [Text-Embeddings-Inference](https://github.com/huggingface/text-embeddings-inference) - Inference for text-embeddings in Rust, HFOIL Licence.
+- [Infinity](https://github.com/michaelfeil/infinity) - Inference for text-embeddings in Python
+- [LMDeploy](https://github.com/InternLM/lmdeploy) - A high-throughput and low-latency inference and serving framework for LLMs and VLs
+- [prima.cpp](https://github.com/Lizonghang/prima.cpp) - A distributed implementation of llama.cpp that lets you run 70B-level LLMs on your everyday devices.
+- [deploy-llms-with-ansible](https://github.com/xamey/deploy-llms-with-ansible) - Easily deploy any LLM on a VM with minimal configuration, using Ansible.
+- [Swiss Army Llama](https://github.com/Dicklesworthstone/swiss_army_llama) - Tools for working with local LLMs.
+- [Wllama](https://github.com/ngxson/wllama) - WebAssembly binding for llama.cpp, enabling in-browser inference.
+- [MNN-LLM](https://github.com/alibaba/MNN) - On-device inference for mobile phones, PCs, and IoT devices.
+
+</details>
+
+#### Serving Gateways
+
+- [AI Gateway](https://github.com/Portkey-AI/gateway) - Unified model access with caching, fallbacks, retries, timeouts, and load balancing.
+- [TensorZero](https://www.tensorzero.com/) - An LLM gateway with observability, optimization, evaluations, and experimentation.
+
+### GPU Kernels and Compilers
+
+- [Triton](https://github.com/triton-lang/triton) - A language and compiler for writing efficient GPU kernels.
+- [CUTLASS](https://github.com/NVIDIA/cutlass) - CUDA C++ abstractions for high-performance matrix multiplication and related operations, including CuTe.
+- [FlashAttention](https://github.com/Dao-AILab/flash-attention) - IO-aware attention kernels that reduce memory traffic without approximating attention.
+- [FlashInfer](https://github.com/flashinfer-ai/flashinfer) - GPU kernels for attention and other LLM inference operations.
+- [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) - Efficient Triton Kernels for LLM Training.
+- [torch.compile](https://pytorch.org/docs/stable/torch.compiler.html) - PyTorch's compilation stack for optimizing model execution.
+
+### Distributed Communication
+
+- [NCCL](https://github.com/NVIDIA/nccl) - Optimized collective communication primitives for NVIDIA GPUs.
+- [UCX](https://github.com/openucx/ucx) - Communication libraries for high-performance networks and shared memory.
+- [DeepEP](https://github.com/deepseek-ai/DeepEP) - Expert-parallel communication for MoE token dispatch and combine.
+
+### Cluster Orchestration and Deployment
+
+- [Ray](https://github.com/ray-project/ray) - Distributed execution and libraries for AI training, data processing, and serving.
+- [Kueue](https://github.com/kubernetes-sigs/kueue) - Kubernetes-native job queueing and quota management for shared compute clusters.
+- [SkyPilot](https://github.com/skypilot-org/skypilot) - Run LLMs and batch jobs on any cloud. Get maximum cost savings, highest GPU availability, and managed execution -- all with a simple interface.
+- [KServe](https://github.com/kserve/kserve) - Kubernetes-based model serving with inference services and autoscaling.
+- [GPUStack](https://github.com/gpustack/gpustack) - GPU cluster management for running LLMs.
+- [Wallaroo.AI](https://github.com/WallarooLabs) - Deploy, manage, and optimize models from cloud to edge.
+
+### Data Pipelines
+
+Engineering tools for preparing, processing, and validating the [LLM datasets](#llm-data) introduced above.
+
+- [IBM data-prep-kit](https://github.com/IBM/data-prep-kit) - Open-Source Toolkit for Efficient Unstructured Data Processing with Pre-built Modules and Local to Cluster Scalability.
+- [Datatrove](https://github.com/huggingface/datatrove) - Freeing data processing from scripting madness by providing a set of platform-agnostic customizable pipeline processing blocks.
+- [Dingo](https://github.com/DataEval/dingo) - Dingo: A Comprehensive Data Quality Evaluation Tool
+- [FastDatasets](https://github.com/ZhuLinsen/FastDatasets) - A powerful tool for creating high-quality training datasets for Large Language Models
+
+### Profiling, Benchmarks, and Observability
+
+Measure infrastructure separately from model quality: training throughput and model FLOPs utilization (MFU), time to first token (TTFT), inter-token latency, throughput under a stated latency target, memory use, and cost. Report hardware, precision, sequence lengths, batch size or concurrency, and software versions alongside results.
+
+- [PyTorch Profiler](https://pytorch.org/docs/stable/profiler.html) - Trace operator execution, memory use, and CPU/GPU activity.
+- [Nsight Systems](https://developer.nvidia.com/nsight-systems) - Inspect end-to-end execution timelines and compute/communication overlap.
+- [Nsight Compute](https://developer.nvidia.com/nsight-compute) - Inspect GPU kernel metrics, memory behavior, and hardware utilization.
+- [MLPerf](https://mlcommons.org/benchmarks/) - Standardized training and inference benchmarks with defined workloads and reporting rules.
+- [Prometheus](https://prometheus.io/) - Collect and query service metrics such as request latency, queue depth, and resource use.
+- [Grafana](https://grafana.com/oss/grafana/) - Dashboards for infrastructure and serving metrics.
+
+#### Experiment Tracking and LLM Observability
+
+- [MLflow](https://mlflow.org/) - Experiment tracking, model lifecycle management, and tracing.
+- [Weights & Biases](https://wandb.ai/site/solutions/llmops) - Model-training and prompt-engineering experiment tracking.
+- [Langfuse](https://github.com/langfuse/langfuse) - Tracing, evaluations, and prompt management for LLM applications.
+- [Arize-Phoenix](https://phoenix.arize.com/) - Open-source ML and LLM observability.
+- [LangWatch](https://github.com/langwatch/langwatch) - LLM observability, evaluation, and prompt optimization.
+
+### AI Infra Tutorials and Articles
+
+- [ICML2022-Welcome to the "Big Model" Era: Techniques and Systems to Train and Serve Bigger Models](https://icml.cc/virtual/2022/tutorial/18440) - Training and serving systems tutorial.
+- [Why did all of the public reproduction of GPT-3 fail?](https://jingfengyang.github.io/gpt) - Training reproduction and engineering lessons.
+- [Large Language Model Training in 2023](https://research.aimultiple.com/large-language-model-training/) - Training overview and engineering context.
+
 ## Contributing
 
-Contributions are welcome, especially AI Infra papers, systems, implementation guides, and reproducible performance studies. Please follow the [contribution guidelines](contributing.md).
-
-Model and application resources are welcome when they provide useful context for training, inference, or operating AI systems.
+Contributions are welcome in both categories: LLM foundations, papers, models, and learning resources; and AI Infra systems, implementation guides, and reproducible performance studies. Please follow the [contribution guidelines](contributing.md) and preserve the LLM-to-Infra learning order.
 
 ---
 

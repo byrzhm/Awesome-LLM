@@ -1,8 +1,8 @@
 # Reinforcement Learning for Large Language Models
 
-A curated reading list covering RLHF/RLAIF, reinforcement learning with verifiable rewards (RLVR), agent training, and training systems. Sources checked on **2026-10-15**; this is not an exhaustive bibliography. Dates denote the **first arXiv submission**, and titles follow the linked revisions. DPO is included as an explicitly labeled RL-free comparison.
+A curated reading list covering RLHF/RLAIF, reinforcement learning with verifiable rewards (RLVR), and agent training as prerequisites for RL infrastructure. Sources checked on **2026-10-15**; this is not an exhaustive bibliography. Dates denote the **first arXiv submission**, and titles follow the linked revisions. DPO is included as an explicitly labeled RL-free comparison.
 
-See also the [RLHF starting points](RLHF.md), [alignment papers](alignment.md), and [frontier model reports](frontier_models.md) for model-scale RL case studies including MiMo-V2.6, Kimi K3, and DeepSeek V4.
+See also the [RLHF starting points](rlhf.md), [alignment papers](alignment.md), and [frontier model reports](frontier_models.md) for model-scale RL case studies including MiMo-V2.6, Kimi K3, and DeepSeek V4. Continue with [RL training systems](../ai_infra/reinforcement_learning.md) for rollout scheduling, distributed execution, and model resharding.
 
 ## Suggested Reading Path
 
@@ -40,8 +40,7 @@ See also the [RLHF starting points](RLHF.md), [alignment papers](alignment.md), 
 
 ## Training Systems
 
-- (2024-05) **OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework** [paper](https://arxiv.org/abs/2405.11143) [code](https://github.com/OpenRLHF/OpenRLHF) — Provides a distributed alignment framework combining Ray, vLLM, DeepSpeed, and Hugging Face Transformers to coordinate RL training and generation.
-- (2024-09) **HybridFlow: A Flexible and Efficient RLHF Framework** [paper](https://arxiv.org/abs/2409.19256) [code](https://github.com/verl-project/verl) — Combines single-controller and multi-controller execution with efficient model resharding between generation and training; its implementation is released as verl.
+The OpenRLHF and HybridFlow/verl papers are catalogued under [AI Infra: RL Training Systems](../ai_infra/reinforcement_learning.md#training-systems). Read them after the algorithm sections above to connect policy optimization with generation, training, and distributed resource management.
 
 ## Analysis, Limitations, and Surveys
 
@@ -51,3 +50,5 @@ See also the [RLHF starting points](RLHF.md), [alignment papers](alignment.md), 
 - (2026-04) **A Survey of Reinforcement Learning for Large Language Models under Data Scarcity: Challenges and Solutions** [paper](https://arxiv.org/abs/2604.17312) — Organizes data-efficient RL methods around data, training, and framework perspectives, covering scarce external supervision and limited generated experience.
 
 Interpret empirical results within each paper's model, reward, data, and compute setting; these studies do not establish a universal answer to whether RL creates new reasoning capabilities.
+
+[Back to LLM](../../README.md#llm)

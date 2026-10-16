@@ -4,3 +4,5 @@
 ## Useful Resource
 - [Retrieval-Augmented Generation_Paper](https://arxiv.org/abs/2005.11401v4) - The Original Paper on RAG published by Meta in 2020.
 - [Retrieval-Augmented Geneartion Survey](https://arxiv.org/abs/2312.10997) - A Comprehensive and High-quality Survey Conducted by Tongji University and Fudan University on RAG in 2023.
+
+[Back to LLM](../../README.md#llm)

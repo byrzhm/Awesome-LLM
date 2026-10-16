@@ -1,4 +1,4 @@
-# Acceleration
+# Training and Inference Systems
 > AI infrastructure papers on training parallelism, memory efficiency, GPU kernels, and inference systems.
 
 This list focuses on systems contributions and the bottlenecks they address. Dates use the first arXiv submission month. For rollout scheduling and distributed post-training, see [RL training systems](reinforcement_learning.md#training-systems).
@@ -8,6 +8,7 @@ This list focuses on systems contributions and the bottlenecks they address. Dat
 - (2018-11) **GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism** [Paper](https://arxiv.org/abs/1811.06965) - Uses microbatching and pipeline parallelism to train models that span multiple accelerators.
 - (2019-09) **Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism** [Paper](https://arxiv.org/abs/1909.08053) | [Code](https://github.com/NVIDIA/Megatron-LM) - Introduces tensor model parallelism for Transformer layers to distribute large-model training across GPUs.
 - (2019-10) **ZeRO: Memory Optimizations Toward Training Trillion Parameter Models** [Paper](https://arxiv.org/abs/1910.02054) | [Code](https://github.com/microsoft/DeepSpeed) - Partitions optimizer states, gradients, and parameters across data-parallel workers to reduce redundant memory use.
+- (2022-01) **Using Deep and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model** [Paper](https://arxiv.org/abs/2201.11990) - Combines Megatron tensor parallelism with DeepSpeed pipeline parallelism and memory optimization for large-scale training.
 
 ## Attention and GPU Kernels
 
@@ -23,8 +24,10 @@ This list focuses on systems contributions and the bottlenecks they address. Dat
 
 ## Useful Resources
 
-- [Training frameworks](../README.md#llm-training-frameworks)
-- [Inference engines](../README.md#llm-inference)
-- [GPU kernels and compilers](../README.md#gpu-kernels-and-compilers)
-- [Distributed communication](../README.md#distributed-communication)
-- [Profiling, benchmarks, and observability](../README.md#profiling-benchmarks-and-observability)
+- [Training frameworks](../../README.md#llm-training-frameworks)
+- [Inference engines](../../README.md#llm-inference)
+- [GPU kernels and compilers](../../README.md#gpu-kernels-and-compilers)
+- [Distributed communication](../../README.md#distributed-communication)
+- [Profiling, benchmarks, and observability](../../README.md#profiling-benchmarks-and-observability)
+
+[Back to AI Infra](../../README.md#ai-infra)

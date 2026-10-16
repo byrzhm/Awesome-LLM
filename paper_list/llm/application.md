@@ -17,3 +17,7 @@
 
 ## Useful Resources
 
+[LLM application frameworks](../../README.md#llm-applications)
+
+[Back to LLM](../../README.md#llm)
+

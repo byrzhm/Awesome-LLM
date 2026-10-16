@@ -1,12 +1,14 @@
 # Contribution Guidelines
 
-This repository is **AI Infra-first**. Prioritize resources about distributed training, reinforcement learning and post-training systems, inference and serving, GPU kernels and compilers, communication, cluster orchestration, data pipelines, profiling, benchmarks, and observability. LLMs and MoE models are the primary workloads; model and application resources should provide relevant context for infrastructure work.
+This repository follows a **LLM foundations -> AI Infra** learning path. Keep resources in two categories: **LLM** for milestone papers, model architectures, pretraining and post-training algorithms, datasets, model quality evaluation, applications, and learning materials; **AI Infra** for distributed training, RL training systems, inference and serving, GPU kernels and compilers, communication, cluster orchestration, data pipelines, profiling, benchmarks, and observability.
 
 To add, remove, or change things on this repository please submit a pull request that adheres to the following guidelines:
 
-- Put resources in the most relevant section and avoid duplicate entries outside the **AI Infra Highlights** overview.
-- Prefer official papers, documentation, and maintained implementation repositories. Include a concise description of the infrastructure problem addressed.
-- For papers in **AI Infra Papers** or **Milestone Papers**, explain the systems contribution or relevance to AI infrastructure. Sort papers chronologically within each category, using the first submission date and explicitly labeling official-release reports.
+- Put resources in the most relevant subsection. Prefer cross-links to duplicate entries; overview sections such as **Milestone Papers**, **Recent Research**, and **AI Infra Highlights** may point to detailed topic guides.
+- Store model and algorithm paper guides in `paper_list/llm/` and systems paper guides in `paper_list/ai_infra/`. Use lowercase, snake_case filenames and update relative links and README navigation when moving a file.
+- Classify by the primary contribution: PPO/GRPO and reward design belong to **LLM**; rollout scheduling and distributed RL execution belong to **AI Infra**. Dataset collections and model quality belong to **LLM**; data-processing pipelines and systems performance belong to **AI Infra**. Cross-link resources spanning both categories.
+- Prefer official papers, documentation, and maintained implementation repositories. Include a concise description of the model/algorithm contribution or infrastructure problem addressed.
+- For **Milestone Papers**, explain the model or algorithm contribution. Put systems milestones in **AI Infra Papers**, with their bottlenecks and engineering contributions. Sort papers chronologically within each category, using the first submission date and explicitly labeling official-release reports.
 - For performance claims, cite the source and state the hardware, workload, precision, software versions, and measurement conditions. Distinguish latency, throughput, memory use, model quality, and cost rather than treating them as interchangeable.
 - For model checkpoints and datasets, link to the official source and include available licensing or access restrictions relevant to deployment and training.
 - Please follow the existing format to add new terms.

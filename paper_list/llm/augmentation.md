@@ -12,3 +12,7 @@
 - (2023-04) **Scaling Transformer to 1M tokens and beyond with RMT** [paper](https://arxiv.org/abs/2304.11062)
 
 ## Useful Resources
+
+[Retrieval-Augmented Generation](retrieval_augmented_generation.md)
+
+[Back to LLM](../../README.md#llm)
