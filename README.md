@@ -28,6 +28,7 @@ Start with **LLM**: milestone papers, architectures, learning algorithms, data, 
   - [LLM Training Frameworks](#llm-training-frameworks)
   - [Reinforcement Learning and Post-training](#reinforcement-learning-and-post-training)
   - [LLM Inference](#llm-inference)
+    - [Speculative Decoding](#speculative-decoding)
   - [GPU Kernels and Compilers](#gpu-kernels-and-compilers)
     - [Sparse Attention Kernels](#sparse-attention-kernels)
   - [Distributed Communication](#distributed-communication)
@@ -630,6 +631,7 @@ Systems knowledge builds on the [LLM foundations](#llm) above: model architectur
 
 - [Training and Inference Systems](paper_list/ai_infra/acceleration.md) - Model parallelism, memory optimization, IO-aware attention, KV cache management, and serving architecture.
 - [RL Training Systems](paper_list/ai_infra/reinforcement_learning.md#training-systems) - OpenRLHF and HybridFlow/verl, with emphasis on coordinating rollout generation and training.
+- [Speculative Decoding](paper_list/ai_infra/speculative_decoding.md) - Foundational speculative sampling, EAGLE, Medusa, MTP, DFlash, DSpark, draft-model training, and serving integration.
 - [Sparse Attention Kernels](paper_list/ai_infra/sparse_attention.md) - MSA, MoBA/FlashMoBA, NSA/FSA, token-sparse FlashMLA, and general block-sparse backends, with papers and implementation boundaries.
 - [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - A broader collection of LLM systems research.
 - [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - Inference papers with implementation links.
@@ -698,6 +700,18 @@ Systems knowledge builds on the [LLM foundations](#llm) above: model architectur
 - [MNN-LLM](https://github.com/alibaba/MNN) - On-device inference for mobile phones, PCs, and IoT devices.
 
 </details>
+
+#### Speculative Decoding
+
+See the [speculative decoding guide](paper_list/ai_infra/speculative_decoding.md) for foundational papers, drafting methods, official implementations, and evaluation boundaries. Speculative decoding proposes and verifies future tokens; it is distinct from sparse attention's reduction of work over existing context.
+
+- [DSpark / DeepSpec](https://github.com/deepseek-ai/DeepSpec) - DeepSeek's [DSpark paper](https://arxiv.org/abs/2607.05147) combines semi-autoregressive block drafting with confidence- and load-aware verification; DeepSpec provides draft-model training and evaluation.
+- [DFlash](https://github.com/z-lab/dflash) - Block-diffusion draft models propose multiple tokens in one forward pass, conditioned on target-model context features.
+- [EAGLE-1 / EAGLE-2 / EAGLE-3](https://github.com/SafeAILab/EAGLE) - Target-feature-conditioned drafting, dynamic draft trees, and training-time-test improvements, with official training and inference code.
+- [Medusa](https://github.com/FasterDecoding/Medusa) - Multiple decoding heads and tree verification; its typical acceptance strategy is not the same as distribution-preserving rejection sampling.
+- [Multi-token Prediction (MTP)](paper_list/ai_infra/speculative_decoding.md#multi-token-prediction) - Model-integrated future-token predictors, including DeepSeek's MTP modules, used to draft speculative continuations.
+- [SpecForge](https://github.com/sgl-project/SpecForge) - SGLang's draft-model training framework, covering EAGLE-3, DFlash, and DSpark with online/offline training workflows.
+- [Speculators](https://github.com/vllm-project/speculators) - vLLM's framework for training, evaluating, and packaging speculative decoding draft models; includes a [DSpark algorithm guide](https://docs.vllm.ai/projects/speculators/en/latest/user_guide/algorithms/dspark/).
 
 #### Serving Gateways
 

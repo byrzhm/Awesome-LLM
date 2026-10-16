@@ -24,6 +24,8 @@ For kernels that skip selected KV tokens or blocks, continue with [Sparse Attent
 - (2024-01) **DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving** [Paper](https://arxiv.org/abs/2401.09670) - Separates prefill and decoding to reduce interference and optimize throughput under latency objectives.
 - (2024-03) **Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve** [Paper](https://arxiv.org/abs/2403.02310) - Uses chunked prefills and stall-free scheduling to balance serving throughput and decode latency.
 
+For draft generation, parallel verification, and acceptance-aware serving, see [Speculative Decoding](speculative_decoding.md), including DSpark/DeepSpec, DFlash, EAGLE, Medusa, MTP, and draft-model training frameworks.
+
 ## Useful Resources
 
 - [Training frameworks](../../README.md#llm-training-frameworks)
