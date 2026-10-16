@@ -29,6 +29,7 @@ Start with **LLM**: milestone papers, architectures, learning algorithms, data, 
   - [Reinforcement Learning and Post-training](#reinforcement-learning-and-post-training)
   - [LLM Inference](#llm-inference)
   - [GPU Kernels and Compilers](#gpu-kernels-and-compilers)
+    - [Sparse Attention Kernels](#sparse-attention-kernels)
   - [Distributed Communication](#distributed-communication)
   - [Cluster Orchestration and Deployment](#cluster-orchestration-and-deployment)
   - [Data Pipelines](#data-pipelines)
@@ -629,6 +630,7 @@ Systems knowledge builds on the [LLM foundations](#llm) above: model architectur
 
 - [Training and Inference Systems](paper_list/ai_infra/acceleration.md) - Model parallelism, memory optimization, IO-aware attention, KV cache management, and serving architecture.
 - [RL Training Systems](paper_list/ai_infra/reinforcement_learning.md#training-systems) - OpenRLHF and HybridFlow/verl, with emphasis on coordinating rollout generation and training.
+- [Sparse Attention Kernels](paper_list/ai_infra/sparse_attention.md) - MSA, MoBA/FlashMoBA, NSA/FSA, token-sparse FlashMLA, and general block-sparse backends, with papers and implementation boundaries.
 - [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - A broader collection of LLM systems research.
 - [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - Inference papers with implementation links.
 - [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression) - LLM compression research papers and tools.
@@ -710,6 +712,20 @@ Systems knowledge builds on the [LLM foundations](#llm) above: model architectur
 - [FlashInfer](https://github.com/flashinfer-ai/flashinfer) - GPU kernels for attention and other LLM inference operations.
 - [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) - Efficient Triton Kernels for LLM Training.
 - [torch.compile](https://pytorch.org/docs/stable/torch.compiler.html) - PyTorch's compilation stack for optimizing model execution.
+
+#### Sparse Attention Kernels
+
+See the [sparse attention guide](paper_list/ai_infra/sparse_attention.md) for papers, kernel interfaces, training/inference coverage, and hardware constraints. Sparse patterns and token selection are distinct from the IO optimizations of dense FlashAttention.
+
+- [MSA (MiniMax Sparse Attention)](https://github.com/MiniMax-AI/MSA) - GQA-group-specific top-k block selection and sparse prefill/decode kernels; the current official implementation targets SM100 with CUDA C++ and CuTe-DSL.
+- [FlashMoBA](https://github.com/mit-han-lab/flash-moba) - CUDA kernels for MoBA routing and block-sparse attention, including variable-length sequences and small KV blocks.
+- [MoBA](https://github.com/MoonshotAI/MoBA) - Moonshot's reference implementation of Mixture of Block Attention; model adaptation requires continued training.
+- [NSA Triton Kernels](https://github.com/fla-org/native-sparse-attention) - FLA's independent implementation of Native Sparse Attention, with online top-k selection and fused selected/sliding attention.
+- [FSA (Flash Sparse Attention)](https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention) - Alternative NSA kernels using KV-outer execution to reduce padding overhead for small GQA groups.
+- [FlashMLA](https://github.com/deepseek-ai/FlashMLA) - DeepSeek's token-sparse prefill/decode kernels with quantized KV caches; check the release-specific GPU and cache-format requirements.
+- [Block-Sparse-Attention](https://github.com/mit-han-lab/Block-Sparse-Attention) - MIT HAN Lab kernels for block masks, streaming patterns, and per-head mixtures, with forward/backward support.
+- [Flex-Block-Attn](https://github.com/Tencent-Hunyuan/flex-block-attn) - Hopper-oriented block-sparse kernels developed for Hunyuan Video training and inference.
+- [FlexAttention](https://pytorch.org/blog/flexattention/) - PyTorch-generated attention kernels with `BlockMask` for custom sparse patterns; see also [FlashInfer's sparse APIs](https://docs.flashinfer.ai/api/sparse.html).
 
 ### Distributed Communication
 

@@ -15,6 +15,8 @@ This list focuses on systems contributions and the bottlenecks they address. Dat
 - (2022-05) **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness** [Paper](https://arxiv.org/abs/2205.14135) | [Code](https://github.com/Dao-AILab/flash-attention) - Uses tiling and recomputation to reduce transfers between GPU high-bandwidth memory and on-chip SRAM.
 - (2023-07) **FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning** [Paper](https://arxiv.org/abs/2307.08691) | [Code](https://github.com/Dao-AILab/flash-attention) - Improves GPU work partitioning and reduces non-matmul work in exact attention.
 
+For kernels that skip selected KV tokens or blocks, continue with [Sparse Attention Kernels](sparse_attention.md): MSA, MoBA/FlashMoBA, NSA/FSA, FlashMLA, and general block-sparse implementations. The guide separates model sparsity mechanisms from dense attention IO optimizations.
+
 ## Inference, KV Cache, and Serving
 
 - (2023-03) **FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU** Ying Sheng et al. [Paper](https://arxiv.org/abs/2303.06865) | [Code](https://github.com/FMInference/FlexGen) - Schedules computation and offloads weights, activations, and KV cache across GPU, CPU, and disk for throughput-oriented inference.
