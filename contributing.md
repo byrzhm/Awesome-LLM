@@ -1,9 +1,14 @@
 # Contribution Guidelines
 
+This repository is **AI Infra-first**. Prioritize resources about distributed training, reinforcement learning and post-training systems, inference and serving, GPU kernels and compilers, communication, cluster orchestration, data pipelines, profiling, benchmarks, and observability. LLMs and MoE models are the primary workloads; model and application resources should provide relevant context for infrastructure work.
+
 To add, remove, or change things on this repository please submit a pull request that adheres to the following guidelines:
 
-- To add a paper in **Milestone Papers**, please mention why it is important in LLM literature and sort the papers in chronological order. 
-- Models in **LLM Leaderboard** should be sorted by their model size.
+- Put resources in the most relevant section and avoid duplicate entries outside the **AI Infra Highlights** overview.
+- Prefer official papers, documentation, and maintained implementation repositories. Include a concise description of the infrastructure problem addressed.
+- For papers in **AI Infra Papers** or **Milestone Papers**, explain the systems contribution or relevance to AI infrastructure. Sort papers chronologically within each category, using the first submission date and explicitly labeling official-release reports.
+- For performance claims, cite the source and state the hardware, workload, precision, software versions, and measurement conditions. Distinguish latency, throughput, memory use, model quality, and cost rather than treating them as interchangeable.
+- For model checkpoints and datasets, link to the official source and include available licensing or access restrictions relevant to deployment and training.
 - Please follow the existing format to add new terms.
 
 Thank you for your suggestions!

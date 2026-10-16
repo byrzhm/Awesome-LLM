@@ -3,7 +3,178 @@
 
 ![](resources/image8.gif)
 
-🔥 Large Language Models(LLM) have taken the ~~NLP community~~ ~~AI community~~ **the Whole World** by storm. Here is a curated list of papers about large language models, especially relating to ChatGPT. It also contains frameworks for LLM training, tools to deploy LLM, courses and tutorials about LLM and all publicly available LLM checkpoints and APIs.
+A curated list of **AI infrastructure (AI Infra)** papers, frameworks, and engineering resources for building, scaling, and operating AI systems. The primary focus is distributed training, reinforcement learning and post-training systems, inference and serving, GPU kernels and compilers, communication, cluster orchestration, data pipelines, and performance measurement.
+
+LLMs and mixture-of-experts (MoE) models are the main workloads covered here. Model reports, checkpoints, quality evaluation, and applications are retained as supporting context for infrastructure design and trade-offs.
+
+## AI Infra Highlights
+
+- **Distributed training:** [Megatron-LM](https://github.com/NVIDIA/Megatron-LM), [DeepSpeed](https://github.com/microsoft/DeepSpeed), and [torchtitan](https://github.com/pytorch/torchtitan).
+- **RL and post-training systems:** [verl](https://github.com/verl-project/verl), [miles](https://github.com/radixark/miles), [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF), and [ROLL](https://github.com/alibaba/ROLL).
+- **Inference and serving:** [SGLang](https://github.com/sgl-project/sglang), [vLLM](https://github.com/vllm-project/vllm), and [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM).
+- **GPU kernels and communication:** [Triton](https://github.com/triton-lang/triton), [CUTLASS](https://github.com/NVIDIA/cutlass), [FlashAttention](https://github.com/Dao-AILab/flash-attention), and [NCCL](https://github.com/NVIDIA/nccl).
+- **Cluster orchestration:** [Ray](https://github.com/ray-project/ray), [Kueue](https://github.com/kubernetes-sigs/kueue), and [SkyPilot](https://github.com/skypilot-org/skypilot).
+
+## Table of Contents
+
+- [AI Infra Highlights](#ai-infra-highlights)
+- [AI Infra Papers](#ai-infra-papers)
+- [LLM Training Frameworks](#llm-training-frameworks)
+- [Reinforcement Learning and Post-training](#reinforcement-learning-and-post-training)
+- [LLM Inference](#llm-inference)
+- [GPU Kernels and Compilers](#gpu-kernels-and-compilers)
+- [Distributed Communication](#distributed-communication)
+- [Cluster Orchestration and Deployment](#cluster-orchestration-and-deployment)
+- [Profiling, Benchmarks, and Observability](#profiling-benchmarks-and-observability)
+- [LLM Data](#llm-data)
+- [LLM Evaluation](#llm-evaluation)
+- [Recent Research](#recent-research)
+- [Trending LLM Projects](#trending-llm-projects)
+- [Milestone Papers](#milestone-papers)
+- [Other Papers](#other-papers)
+- [LLM Leaderboard](#llm-leaderboard)
+- [Open LLM](#open-llm)
+- [LLM Applications](#llm-applications)
+- [LLM Tutorials and Courses](#llm-tutorials-and-courses)
+- [LLM Books](#llm-books)
+- [Great thoughts about LLM](#great-thoughts-about-llm)
+- [Miscellaneous](#miscellaneous)
+- [Contributing](#contributing)
+
+## AI Infra Papers
+
+- [Training and Inference Systems](paper_list/acceleration.md) - Model parallelism, memory optimization, IO-aware attention, KV cache management, and serving architecture.
+- [RL Training Systems](paper_list/reinforcement_learning.md#training-systems) - OpenRLHF and HybridFlow/verl, with emphasis on coordinating rollout generation and training.
+- [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - A broader collection of LLM systems research.
+- [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - Inference papers with implementation links.
+
+## LLM Training Frameworks
+
+- [Meta Lingua](https://github.com/facebookresearch/lingua) - a lean, efficient, and easy-to-hack codebase to research LLMs.
+- [Litgpt](https://github.com/Lightning-AI/litgpt) - 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
+- [nanotron](https://github.com/huggingface/nanotron) - Minimalistic large language model 3D-parallelism training.
+- [DeepSpeed](https://github.com/microsoft/DeepSpeed) - DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
+- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) - Ongoing research training transformer models at scale.
+- [torchtitan](https://github.com/pytorch/torchtitan) - A native PyTorch Library for large model training.
+
+<details>
+<summary>other frameworks</summary>
+
+  - [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed) - DeepSpeed version of NVIDIA's Megatron-LM that adds additional support for several features such as MoE model training, Curriculum Learning, 3D Parallelism, and others.
+  - [torchtune](https://github.com/pytorch/torchtune) - A Native-PyTorch Library for LLM Fine-tuning.
+  - [NeMo Framework](https://github.com/NVIDIA/NeMo) - Generative AI framework built for researchers and PyTorch developers working on Large Language Models (LLMs), Multimodal Models (MMs), Automatic Speech Recognition (ASR), Text to Speech (TTS), and Computer Vision (CV) domains.
+  - [Colossal-AI](https://github.com/hpcaitech/ColossalAI) - Making large AI models cheaper, faster, and more accessible.
+  - [BMTrain](https://github.com/OpenBMB/BMTrain) - Efficient Training for Big Models.
+  - [Mesh Tensorflow](https://github.com/tensorflow/mesh) - Mesh TensorFlow: Model Parallelism Made Easier.
+  - [maxtext](https://github.com/AI-Hypercomputer/maxtext) - A simple, performant and scalable Jax LLM!
+  - [GPT-NeoX](https://github.com/EleutherAI/gpt-neox) - An implementation of model parallel autoregressive transformers on GPUs, based on the DeepSpeed library.
+  - [Transformer Engine](https://github.com/NVIDIA/TransformerEngine) - A library for accelerating Transformer model training on NVIDIA GPUs.
+  - [unslothai](https://github.com/unslothai/unsloth) - A framework that specializes in efficient fine-tuning. On its GitHub page, you can find ready-to-use fine-tuning templates for various LLMs, allowing you to easily train your own data for free on the Google Colab cloud.
+  - [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) - Open-source framework for fine-tuning and evaluating LLMs. It simplifies the process of experimenting with different training configurations and makes it easy to reproduce and share results, supporting features like LoRA, QLoRA, DeepSpeed, PEFT, and multi-GPU setups.
+
+</details>
+
+### Reinforcement Learning and Post-training
+
+- [verl](https://github.com/verl-project/verl) - A flexible and efficient RL framework for LLMs; see the [RL paper guide](paper_list/reinforcement_learning.md) for its HybridFlow paper and related systems.
+- [miles](https://github.com/radixark/miles) - A reinforcement learning framework for large-scale model post-training, combining SGLang rollouts with Megatron-LM training and supporting fully asynchronous RL.
+- [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) - An Easy-to-use, Scalable and High-performance RLHF Framework (70B+ PPO Full Tuning & Iterative DPO & LoRA & RingAttention & RFT).
+- [ROLL](https://github.com/alibaba/ROLL) - An Efficient and User-Friendly Scaling Library for Reinforcement Learning with Large Language Models.
+- [TRL](https://huggingface.co/docs/trl/en/index) - TRL is a full stack library where we provide a set of tools to train transformer language models with Reinforcement Learning, from the Supervised Fine-tuning step (SFT), Reward Modeling step (RM) to the Proximal Policy Optimization (PPO) step.
+
+## LLM Inference
+
+> Reference: [llm-inference-solutions](https://github.com/mani-kantap/llm-inference-solutions)
+- [SGLang](https://github.com/sgl-project/sglang) - SGLang is a fast serving framework for large language models and vision language models.
+- [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs.
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) - LLM inference in C/C++.
+- [ollama](https://github.com/ollama/ollama) - Get up and running with Llama 3, Mistral, Gemma, and other large language models.
+- [TGI](https://huggingface.co/docs/text-generation-inference/en/index) - a toolkit for deploying and serving Large Language Models (LLMs).
+- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) - Nvidia Framework for LLM Inference
+<details>
+<summary>other deployment tools</summary>
+
+- [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) - NVIDIA Framework for LLM Inference(Transitioned to TensorRT-LLM)
+- [MInference](https://github.com/microsoft/MInference) - To speed up Long-context LLMs' inference, approximate and dynamic sparse calculate the attention, which reduces inference latency by up to 10x for pre-filling on an A100 while maintaining accuracy.
+- [exllama](https://github.com/turboderp/exllama) - A more memory-efficient rewrite of the HF transformers implementation of Llama for use with quantized weights.
+- [FastChat](https://github.com/lm-sys/FastChat) - A distributed multi-model LLM serving system with web UI and OpenAI-compatible RESTful APIs.
+- [mistral.rs](https://github.com/EricLBuehler/mistral.rs) - Blazingly fast LLM inference.
+- [Haystack](https://haystack.deepset.ai/) - an open-source NLP framework that allows you to use LLMs and transformer-based models from Hugging Face, OpenAI and Cohere to interact with your own data.
+- [OpenLLM](https://github.com/bentoml/OpenLLM) - Fine-tune, serve, deploy, and monitor any open-source LLMs in production. Used in production at [BentoML](https://bentoml.com/) for LLMs-based applications.
+- [DeepSpeed-Mii](https://github.com/microsoft/DeepSpeed-MII) -  MII makes low-latency and high-throughput inference, similar to vLLM powered by DeepSpeed.
+- [Text-Embeddings-Inference](https://github.com/huggingface/text-embeddings-inference) - Inference for text-embeddings in Rust, HFOIL Licence.
+- [Infinity](https://github.com/michaelfeil/infinity) - Inference for text-embeddings in Python
+- [LMDeploy](https://github.com/InternLM/lmdeploy) - A high-throughput and low-latency inference and serving framework for LLMs and VLs
+- [prima.cpp](https://github.com/Lizonghang/prima.cpp) - A distributed implementation of llama.cpp that lets you run 70B-level LLMs on your everyday devices.
+- [deploy-llms-with-ansible](https://github.com/xamey/deploy-llms-with-ansible) - Easily deploy any LLM on a VM with minimal configuration, using Ansible.
+
+</details>
+
+## GPU Kernels and Compilers
+
+- [Triton](https://github.com/triton-lang/triton) - A language and compiler for writing efficient GPU kernels.
+- [CUTLASS](https://github.com/NVIDIA/cutlass) - CUDA C++ abstractions for high-performance matrix multiplication and related operations, including CuTe.
+- [FlashAttention](https://github.com/Dao-AILab/flash-attention) - IO-aware attention kernels that reduce memory traffic without approximating attention.
+- [FlashInfer](https://github.com/flashinfer-ai/flashinfer) - GPU kernels for attention and other LLM inference operations.
+- [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) - Efficient Triton Kernels for LLM Training.
+- [torch.compile](https://pytorch.org/docs/stable/torch.compiler.html) - PyTorch's compilation stack for optimizing model execution.
+
+## Distributed Communication
+
+- [NCCL](https://github.com/NVIDIA/nccl) - Optimized collective communication primitives for NVIDIA GPUs.
+- [UCX](https://github.com/openucx/ucx) - Communication libraries for high-performance networks and shared memory.
+- [DeepEP](https://github.com/deepseek-ai/DeepEP) - Expert-parallel communication for MoE token dispatch and combine.
+
+## Cluster Orchestration and Deployment
+
+- [Ray](https://github.com/ray-project/ray) - Distributed execution and libraries for AI training, data processing, and serving.
+- [Kueue](https://github.com/kubernetes-sigs/kueue) - Kubernetes-native job queueing and quota management for shared compute clusters.
+- [SkyPilot](https://github.com/skypilot-org/skypilot) - Run LLMs and batch jobs on any cloud. Get maximum cost savings, highest GPU availability, and managed execution -- all with a simple interface.
+- [KServe](https://github.com/kserve/kserve) - Kubernetes-based model serving with inference services and autoscaling.
+
+## Profiling, Benchmarks, and Observability
+
+Measure infrastructure separately from model quality: training throughput and model FLOPs utilization (MFU), time to first token (TTFT), inter-token latency, throughput under a stated latency target, memory use, and cost. Report hardware, precision, sequence lengths, batch size or concurrency, and software versions alongside results.
+
+- [PyTorch Profiler](https://pytorch.org/docs/stable/profiler.html) - Trace operator execution, memory use, and CPU/GPU activity.
+- [Nsight Systems](https://developer.nvidia.com/nsight-systems) - Inspect end-to-end execution timelines and compute/communication overlap.
+- [Nsight Compute](https://developer.nvidia.com/nsight-compute) - Inspect GPU kernel metrics, memory behavior, and hardware utilization.
+- [MLPerf](https://mlcommons.org/benchmarks/) - Standardized training and inference benchmarks with defined workloads and reporting rules.
+- [Prometheus](https://prometheus.io/) - Collect and query service metrics such as request latency, queue depth, and resource use.
+- [Grafana](https://grafana.com/oss/grafana/) - Dashboards for infrastructure and serving metrics.
+
+## LLM Data
+> Reference: [LLMDataHub](https://github.com/Zjh-819/LLMDataHub)
+- [IBM data-prep-kit](https://github.com/IBM/data-prep-kit) - Open-Source Toolkit for Efficient Unstructured Data Processing with Pre-built Modules and Local to Cluster Scalability.
+- [Datatrove](https://github.com/huggingface/datatrove) - Freeing data processing from scripting madness by providing a set of platform-agnostic customizable pipeline processing blocks.
+- [Dingo](https://github.com/DataEval/dingo) - Dingo: A Comprehensive Data Quality Evaluation Tool
+- [FastDatasets](https://github.com/ZhuLinsen/FastDatasets) - A powerful tool for creating high-quality training datasets for Large Language Models
+
+## LLM Evaluation:
+- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) - A framework for few-shot evaluation of language models.
+- [lighteval](https://github.com/huggingface/lighteval) - a lightweight LLM evaluation suite that Hugging Face has been using internally.
+- [simple-evals](https://github.com/openai/simple-evals) - Eval tools by OpenAI.
+
+<details>
+<summary>other evaluation frameworks</summary>
+
+- [OLMO-eval](https://github.com/allenai/OLMo-Eval) - a repository for evaluating open language models.
+- [MixEval](https://github.com/Psycoy/MixEval) - A reliable click-and-go evaluation suite compatible with both open-source and proprietary models, supporting MixEval and other benchmarks.
+- [HELM](https://github.com/stanford-crfm/helm) - Holistic Evaluation of Language Models (HELM), a framework to increase the transparency of language models.
+- [instruct-eval](https://github.com/declare-lab/instruct-eval) - This repository contains code to quantitatively evaluate instruction-tuned models such as Alpaca and Flan-T5 on held-out tasks.
+- [Giskard](https://github.com/Giskard-AI/giskard) - Testing & evaluation library for LLM applications, in particular RAGs
+- [LangSmith](https://www.langchain.com/langsmith) - a unified platform from LangChain framework for: evaluation, collaboration HITL (Human In The Loop), logging and monitoring LLM applications.
+- [Ragas](https://github.com/explodinggradients/ragas) - a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines.
+
+</details>
+
+## Recent Research
+
+Sources checked on **2026-10-15**. Paper dates and model launch dates are distinguished in the linked lists.
+
+- [Recent Frontier Model Reports](paper_list/frontier_models.md) - MiMo, Kimi, and DeepSeek papers with dates, contributions, and official resources; GPT-6 Astra is covered through verified official documentation.
+- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - RLHF, PPO, GRPO, DAPO, GSPO, verifiable rewards, agent training, systems, and recent analysis, with paper summaries and a suggested reading path.
+- [RLHF Starting Points](paper_list/RLHF.md) - InstructGPT, Constitutional AI, and the RL-free DPO comparison.
 
 ## Trending LLM Projects
 
@@ -18,32 +189,6 @@
 - [OpenAI o3-mini](https://openai.com/index/openai-o3-mini/) - Pushing the frontier of cost-effective reasoning.
 - [DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-V3) - First open-sourced GPT-4o level model.
 - [Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) - MoE language model with 32B active and 1T total parameters.
-
-
-## Table of Content
-- [Awesome-LLM ](#awesome-llm-)
-  - [Recent Research](#recent-research)
-  - [Milestone Papers](#milestone-papers)
-  - [Other Papers](#other-papers)
-  - [LLM Leaderboard](#llm-leaderboard)
-  - [Open LLM](#open-llm)
-  - [LLM Data](#llm-data)
-  - [LLM Evaluation](#llm-evaluation)
-  - [LLM Training Framework](#llm-training-frameworks)
-  - [LLM Inference](#llm-inference)
-  - [LLM Applications](#llm-applications)
-  - [LLM Tutorials and Courses](#llm-tutorials-and-courses)
-  - [LLM Books](#llm-books)
-  - [Great thoughts about LLM](#great-thoughts-about-llm)
-  - [Miscellaneous](#miscellaneous)
-
-## Recent Research
-
-Sources checked on **2026-10-15**. Paper dates and model launch dates are distinguished in the linked lists.
-
-- [Recent Frontier Model Reports](paper_list/frontier_models.md) - MiMo, Kimi, and DeepSeek papers with dates, contributions, and official resources; GPT-6 Astra is covered through verified official documentation.
-- [Reinforcement Learning for LLMs](paper_list/reinforcement_learning.md) - RLHF, PPO, GRPO, DAPO, GSPO, verifiable rewards, agent training, systems, and recent analysis, with paper summaries and a suggested reading path.
-- [RLHF Starting Points](paper_list/RLHF.md) - InstructGPT, Constitutional AI, and the RL-free DPO comparison.
 
 ## Milestone Papers
 
@@ -160,11 +305,9 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 - [Awesome-Align-LLM-Human](https://github.com/GaryYufei/AlignLLMHumanSurvey) - A collection of papers and resources about aligning large language models (LLMs) with human.
 - [Awesome-Code-LLM](https://github.com/huybery/Awesome-Code-LLM) - An awesome and curated list of best code-LLM for research.
 - [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression) - Awesome LLM compression research papers and tools.
-- [Awesome-LLM-Systems](https://github.com/AmberLJC/LLMSys-PaperList) - Awesome LLM systems research papers.
 - [awesome-llm-webapps](https://github.com/snowfort-ai/awesome-llm-webapps) - A collection of open source, actively maintained web apps for LLM applications.
 - [awesome-japanese-llm](https://github.com/llm-jp/awesome-japanese-llm) - 日本語LLMまとめ - Overview of Japanese LLMs.
 - [Awesome-LLM-Healthcare](https://github.com/mingze-yuan/Awesome-LLM-Healthcare) - The paper list of the review on LLMs in medicine.
-- [Awesome-LLM-Inference](https://github.com/DefTruth/Awesome-LLM-Inference) - A curated list of Awesome LLM Inference Paper with codes.
 - [Awesome-LLM-3D](https://github.com/ActiveVisionLab/Awesome-LLM-3D) - A curated list of Multi-modal Large Language Model in 3D world, including 3D understanding, reasoning, generation, and embodied agents.
 - [LLMDatahub](https://github.com/Zjh-819/LLMDataHub) - a curated collection of datasets specifically designed for chatbot training, including links, size, language, usage, and a brief description of each dataset
 - [Awesome-Chinese-LLM](https://github.com/HqWu-HITCS/Awesome-Chinese-LLM) - 整理开源的中文大语言模型，以规模较小、可私有化部署、训练成本较低的模型为主，包括底座模型，垂直领域微调及应用，数据集与教程等。
@@ -435,95 +578,6 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 </details>
 
 
-## LLM Data
-> Reference: [LLMDataHub](https://github.com/Zjh-819/LLMDataHub)
-- [IBM data-prep-kit](https://github.com/IBM/data-prep-kit) - Open-Source Toolkit for Efficient Unstructured Data Processing with Pre-built Modules and Local to Cluster Scalability.
-- [Datatrove](https://github.com/huggingface/datatrove) - Freeing data processing from scripting madness by providing a set of platform-agnostic customizable pipeline processing blocks.
-- [Dingo](https://github.com/DataEval/dingo) - Dingo: A Comprehensive Data Quality Evaluation Tool
-- [FastDatasets](https://github.com/ZhuLinsen/FastDatasets) - A powerful tool for creating high-quality training datasets for Large Language Models
-
-## LLM Evaluation:
-- [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) - A framework for few-shot evaluation of language models.
-- [lighteval](https://github.com/huggingface/lighteval) - a lightweight LLM evaluation suite that Hugging Face has been using internally.
-- [simple-evals](https://github.com/openai/simple-evals) - Eval tools by OpenAI.
-
-<details>
-<summary>other evaluation frameworks</summary>
-
-- [OLMO-eval](https://github.com/allenai/OLMo-Eval) - a repository for evaluating open language models.
-- [MixEval](https://github.com/Psycoy/MixEval) - A reliable click-and-go evaluation suite compatible with both open-source and proprietary models, supporting MixEval and other benchmarks.
-- [HELM](https://github.com/stanford-crfm/helm) - Holistic Evaluation of Language Models (HELM), a framework to increase the transparency of language models.
-- [instruct-eval](https://github.com/declare-lab/instruct-eval) - This repository contains code to quantitatively evaluate instruction-tuned models such as Alpaca and Flan-T5 on held-out tasks.
-- [Giskard](https://github.com/Giskard-AI/giskard) - Testing & evaluation library for LLM applications, in particular RAGs
-- [LangSmith](https://www.langchain.com/langsmith) - a unified platform from LangChain framework for: evaluation, collaboration HITL (Human In The Loop), logging and monitoring LLM applications.  
-- [Ragas](https://github.com/explodinggradients/ragas) - a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines.
-
-</details>
-
-
-
-## LLM Training Frameworks
-
-- [Meta Lingua](https://github.com/facebookresearch/lingua) - a lean, efficient, and easy-to-hack codebase to research LLMs.
-- [Litgpt](https://github.com/Lightning-AI/litgpt) - 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
-- [nanotron](https://github.com/huggingface/nanotron) - Minimalistic large language model 3D-parallelism training.
-- [DeepSpeed](https://github.com/microsoft/DeepSpeed) - DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.
-- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) - Ongoing research training transformer models at scale.
-- [torchtitan](https://github.com/pytorch/torchtitan) - A native PyTorch Library for large model training.
-
-<details>
-<summary>other frameworks</summary>
-
-  - [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed) - DeepSpeed version of NVIDIA's Megatron-LM that adds additional support for several features such as MoE model training, Curriculum Learning, 3D Parallelism, and others. 
-  - [torchtune](https://github.com/pytorch/torchtune) - A Native-PyTorch Library for LLM Fine-tuning.
-  - [ROLL](https://github.com/alibaba/ROLL) - An Efficient and User-Friendly Scaling Library for Reinforcement Learning with Large Language Models.
-  - [verl](https://github.com/verl-project/verl) - A flexible and efficient RL framework for LLMs; see the [RL paper guide](paper_list/reinforcement_learning.md) for its HybridFlow paper and related systems.
-  - [NeMo Framework](https://github.com/NVIDIA/NeMo) - Generative AI framework built for researchers and PyTorch developers working on Large Language Models (LLMs), Multimodal Models (MMs), Automatic Speech Recognition (ASR), Text to Speech (TTS), and Computer Vision (CV) domains.
-  - [Colossal-AI](https://github.com/hpcaitech/ColossalAI) - Making large AI models cheaper, faster, and more accessible.
-  - [BMTrain](https://github.com/OpenBMB/BMTrain) - Efficient Training for Big Models.
-  - [Mesh Tensorflow](https://github.com/tensorflow/mesh) - Mesh TensorFlow: Model Parallelism Made Easier.
-  - [maxtext](https://github.com/AI-Hypercomputer/maxtext) - A simple, performant and scalable Jax LLM!
-  - [GPT-NeoX](https://github.com/EleutherAI/gpt-neox) - An implementation of model parallel autoregressive transformers on GPUs, based on the DeepSpeed library.
-  - [Transformer Engine](https://github.com/NVIDIA/TransformerEngine) - A library for accelerating Transformer model training on NVIDIA GPUs.
-  - [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) - An Easy-to-use, Scalable and High-performance RLHF Framework (70B+ PPO Full Tuning & Iterative DPO & LoRA & RingAttention & RFT).
-  - [TRL](https://huggingface.co/docs/trl/en/index) - TRL is a full stack library where we provide a set of tools to train transformer language models with Reinforcement Learning, from the Supervised Fine-tuning step (SFT), Reward Modeling step (RM) to the Proximal Policy Optimization (PPO) step.
-  - [unslothai](https://github.com/unslothai/unsloth) - A framework that specializes in efficient fine-tuning. On its GitHub page, you can find ready-to-use fine-tuning templates for various LLMs, allowing you to easily train your own data for free on the Google Colab cloud.
-  - [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) - Open-source framework for fine-tuning and evaluating LLMs. It simplifies the process of experimenting with different training configurations and makes it easy to reproduce and share results, supporting features like LoRA, QLoRA, DeepSpeed, PEFT, and multi-GPU setups.
-
-</details>
-
-
-## LLM Inference
-
-> Reference: [llm-inference-solutions](https://github.com/mani-kantap/llm-inference-solutions)
-- [SGLang](https://github.com/sgl-project/sglang) - SGLang is a fast serving framework for large language models and vision language models.
-- [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs.
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) - LLM inference in C/C++.
-- [ollama](https://github.com/ollama/ollama) - Get up and running with Llama 3, Mistral, Gemma, and other large language models.
-- [TGI](https://huggingface.co/docs/text-generation-inference/en/index) - a toolkit for deploying and serving Large Language Models (LLMs).
-- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) - Nvidia Framework for LLM Inference
-<details>
-<summary>other deployment tools</summary>
-
-- [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) - NVIDIA Framework for LLM Inference(Transitioned to TensorRT-LLM)
-- [MInference](https://github.com/microsoft/MInference) - To speed up Long-context LLMs' inference, approximate and dynamic sparse calculate the attention, which reduces inference latency by up to 10x for pre-filling on an A100 while maintaining accuracy.
-- [exllama](https://github.com/turboderp/exllama) - A more memory-efficient rewrite of the HF transformers implementation of Llama for use with quantized weights.
-- [FastChat](https://github.com/lm-sys/FastChat) - A distributed multi-model LLM serving system with web UI and OpenAI-compatible RESTful APIs.
-- [mistral.rs](https://github.com/EricLBuehler/mistral.rs) - Blazingly fast LLM inference.
-- [SkyPilot](https://github.com/skypilot-org/skypilot) - Run LLMs and batch jobs on any cloud. Get maximum cost savings, highest GPU availability, and managed execution -- all with a simple interface.
-- [Haystack](https://haystack.deepset.ai/) - an open-source NLP framework that allows you to use LLMs and transformer-based models from Hugging Face, OpenAI and Cohere to interact with your own data. 
-- [OpenLLM](https://github.com/bentoml/OpenLLM) - Fine-tune, serve, deploy, and monitor any open-source LLMs in production. Used in production at [BentoML](https://bentoml.com/) for LLMs-based applications.
-- [DeepSpeed-Mii](https://github.com/microsoft/DeepSpeed-MII) -  MII makes low-latency and high-throughput inference, similar to vLLM powered by DeepSpeed.
-- [Text-Embeddings-Inference](https://github.com/huggingface/text-embeddings-inference) - Inference for text-embeddings in Rust, HFOIL Licence.
-- [Infinity](https://github.com/michaelfeil/infinity) - Inference for text-embeddings in Python
-- [LMDeploy](https://github.com/InternLM/lmdeploy) - A high-throughput and low-latency inference and serving framework for LLMs and VLs
-- [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) - Efficient Triton Kernels for LLM Training.
-- [prima.cpp](https://github.com/Lizonghang/prima.cpp) - A distributed implementation of llama.cpp that lets you run 70B-level LLMs on your everyday devices.
-- [deploy-llms-with-ansible](https://github.com/xamey/deploy-llms-with-ansible) - Easily deploy any LLM on a VM with minimal configuration, using Ansible.
-
-</details>
-
-
 ## LLM Applications
 > Reference: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)
 - [dspy](https://github.com/stanfordnlp/dspy) - DSPy: The framework for programming—not prompting—foundation models.
@@ -658,9 +712,9 @@ The [recent model report guide](paper_list/frontier_models.md) explains the cont
 
 ## Contributing
 
-This is an active repository and your contributions are always welcome!
+Contributions are welcome, especially AI Infra papers, systems, implementation guides, and reproducible performance studies. Please follow the [contribution guidelines](contributing.md).
 
-I will keep some pull requests open if I'm not sure if they are awesome for LLM, you could vote for them by adding 👍 to them.
+Model and application resources are welcome when they provide useful context for training, inference, or operating AI systems.
 
 ---
 
